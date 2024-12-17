@@ -14,7 +14,7 @@ const notesData = {
         "Geography": ["Chapter 5 - Agriculture and Crops"]
     },
     computer: {
-        "Binary Folks": ["Chapter 6 - More on Visual Basic 2015", "Chapter 9 - Computer Ethics"],
+        "Binary Folks": ["Chapter 6 - More on Visual Basic 2015", "Chapter 9 - Computer Ethics", "Chapter 9 - Multimedia],
     },
     science: {
         "Science": ["Coming Soon"],
