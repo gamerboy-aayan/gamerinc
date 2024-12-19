@@ -293,12 +293,12 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .nav-links {
+    header .nav-links {
         display: none; /* Hidden by default */
         flex-direction: column;
         position: absolute;
-        top: 60px;
-        right: 10px;
+        top: 90px;
+        left: 10px;
         background-color: #333;
         padding: 10px;
         border-radius: 5px;
@@ -306,7 +306,7 @@ body {
         z-index: 1000; /* Ensure it is above other elements */
     }   
 
-    .nav-links.active {
+    header .nav-links.active {
         display: flex; /* Show the nav links when active */
     }
 
