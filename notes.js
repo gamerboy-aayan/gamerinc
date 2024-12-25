@@ -5,7 +5,7 @@ const notesData = {
         "Hindi Pathmala": ["Whole Book"]
     },
     english: {
-        "English Reader": ["Chapter 5 - Princess September"],
+        "English Reader": ["Chapter 5 - Princess September", "Chapter 6 - The Fight"],
         "English Literature": ["Coming Soon"]
     },
     socialScience: {
