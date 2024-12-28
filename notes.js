@@ -6,7 +6,7 @@ const notesData = {
     },
     english: {
         "English Reader": ["Chapter 5 - Princess September", "Chapter 6 - The Fight"],
-        "English Literature": ["Coming Soon"]
+        "English Literature": ["Chapter 11 - A Remarkable Rocket"]
     },
     socialScience: {
         "History": ["Chapter 6 - British and Education"],
