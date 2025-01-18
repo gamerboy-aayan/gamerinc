@@ -1,7 +1,7 @@
 // Data Structure for Notes
 const notesData = {
     hindi: {
-        "Bharat Ki Khoj": ["Chapter 6 - Antim Daur I", "Chapter 7 - Antim Daur II"],
+        "Bharat Ki Khoj": ["Chapter 6 - Antim Daur I", "Chapter 7 - Antim Daur II", "Chapter 8 - Tanav"],
         "Hindi Pathmala": ["Whole Book"]
     },
     english: {
