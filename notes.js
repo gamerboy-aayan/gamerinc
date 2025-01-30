@@ -10,11 +10,11 @@ const notesData = {
     },
     socialScience: {
         "History": ["Chapter 6 - British and Education"],
-        "Civics": ["Chapter 6 - Confronting Marginalisation"],
-        "Geography": ["Chapter 5 - Agriculture and Crops"]
+        "Civics": ["Chapter 6 - Confronting Marginalisation", "Chapter 7 - Public Facilities and the Role of Government", "Chapter 8 - Law and Social Justice"],
+        "Geography": ["Chapter 5 - Agriculture and Crops", "Chapter 7 - Human Resources"]
     },
     computer: {
-        "Binary Folks": ["Chapter 6 - More on Visual Basic 2015", "Chapter 9 - Computer Ethics", "Chapter 8 - Multimedia"],
+        "Binary Folks": ["Chapter 6 - More on Visual Basic 2015", "Chapter 7 - Introduction to Java & BlueJ", "Chapter 8 - Multimedia", "Chapter 9 - Computer Ethics"]
     },
     science: {
         "Science": ["Coming Soon"],
