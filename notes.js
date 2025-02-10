@@ -5,7 +5,7 @@ const notesData = {
         "Hindi Pathmala": ["Whole Book"]
     },
     english: {
-        "English Reader": ["Chapter 5 - Princess September", "Chapter 6 - The Fight"],
+        "English Reader": ["Chapter 5 - Princess September", "Chapter 6 - The Fight", "Chapter 7 - Jalebis"],
         "English Literature": ["Chapter 11 - A Remarkable Rocket"]
     },
     socialScience: {
@@ -17,7 +17,7 @@ const notesData = {
         "Binary Folks": ["Chapter 6 - More on Visual Basic 2015", "Chapter 7 - Introduction to Java & BlueJ", "Chapter 8 - Multimedia", "Chapter 9 - Computer Ethics"]
     },
     science: {
-        "Science": ["Coming Soon"],
+        "Science": ["Chapter 9 - Force And Pressure", "Chapter 10 - Some Natural Phenomena"],
     }
 };
 
