@@ -20,6 +20,17 @@ body {
     margin: 0 auto;
 }
 
+.registration-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -43,6 +54,8 @@ body {
 .navbar {
     display: flex;
     align-items: center;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .navbar ul {
@@ -54,6 +67,7 @@ body {
 
 .navbar ul li {
     margin-left: 20px;
+    font-weight: bold;
 }
 
 .navbar ul li a {
@@ -69,6 +83,76 @@ body {
     border-bottom: 2px solid #ff5722;
 }
 
+/* 🌟 RIGHT-SIDE CONTAINER (LOGIN/SIGNUP & PROFILE PICTURE) */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* 🌟 REMOVE BULLET POINTS */
+.navbar-right ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* 🌟 LOGIN/SIGNUP LINKS */
+#auth-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+#auth-links a:hover {
+    color: #ff5722;
+}
+
+/* 🌟 PROFILE PICTURE */
+#profile-container {
+    position: relative;
+}
+
+#profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+/* 🌟 DROPDOWN MENU */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    width: 150px;
+    z-index: 1000;
+}
+
+/* 🌟 DROPDOWN BUTTON STYLES */
+.dropdown-menu button {
+    width: 100%;
+    padding: 8px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.dropdown-menu button:hover {
+    background: #f0f0f036;
+}
+
 /* Hero Section */
 .hero {
     flex: 1; /* Take up all available space in the middle */
@@ -78,24 +162,36 @@ body {
     color: white;
 }
 
-.hero h1 {
-    font-size: 2.5em;
+.hero h2 {
+    font-size: 1.5em;
     margin-bottom: 10px;
 }
 
-.hero p {
+.hero h3 {
     font-size: 1.2em;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.hero p {
+    font-size: 1em;
+    margin-bottom: 10px;
+    margin-right:10px;
+    margin-left:20px;
+    font-family: 'Arial', sans-serif
 }
 
 .hero .btn-primary {
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family : 'Arial', sans-serif;
     display: inline-block;
     padding: 10px 20px;
     background-color: #ff5722;
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    margin-top: 20px;
+    margin-top: 10px;
     transition: background-color 0.3s;
 }
 
@@ -291,6 +387,182 @@ body {
     color: #ff8a50;
 }
 
+h2 {
+    color: #ff5722;
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input, button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+input {
+    background: #f4f4f4;
+    color: #333;
+    width: 180px;
+}
+
+button {
+    background: #ff5722;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background: #e64a19;
+}
+
+#registeredMembers {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+/* Desktop: 3 boxes per row */
+@media (min-width: 769px) {
+    #registeredMembers {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Student Box */
+.student-box {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    max-width: 250px;
+    text-align: justify;
+}
+
+/* Three-dots Menu */
+.student-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dots {
+    cursor: pointer;
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+/* Updated Menu Styling */
+.menu {
+    display: none;
+    position: absolute;
+    top: 25px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.9); /* Dark Black Background */
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    z-index: 10;
+    color: white; /* White text for contrast */
+}
+
+/* Updated Button Styles for Better Visibility */
+.menu button {
+    background: none;
+    border: none;
+    padding: 5px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    color: white; /* White text for better contrast */
+}
+
+/* Hover Effect for Buttons */
+.menu button:hover {
+    background: rgba(255, 255, 255, 0.2); /* Light overlay effect */
+}
+
+
+/* Center the signup form */
+#signup-modal, #login-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
+#signup-form, #login-form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Adds space between fields */
+    width: 300px; /* Adjust width */
+}
+
+/* Input field styling */
+#signup-form input, #login-form input {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%; /* Make input fields full width */
+}
+
+/* Increase email field width */
+#signup-email, #login-email {
+    width: 100%; /* Expand email field */
+}
+
+/* Style the button */
+#signup-form button, #login-form button {
+    background: #ff5722;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+#signup-form button:hover, #login-form button:hover {
+    background: #e64a19;
+}
+
+/* Style for password input with eye icon */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input {
+    width: 100%;
+    padding-right: 40px; /* Space for eye icon */
+}
+
+.password-container i {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #555;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     header .nav-links {
@@ -299,10 +571,10 @@ body {
         position: absolute;
         top: 90px;
         left: 10px;
-        background-color: #333;
+        background-color: rgba(0, 0, 0, 0.7);
         padding: 10px;
         border-radius: 5px;
-        width: 150px;
+        width: 180px;
         z-index: 1000; /* Ensure it is above other elements */
     }   
 
@@ -319,8 +591,18 @@ body {
         margin: 10px 0;
     }
 
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 1em;
+    }
+
     .menu-toggle {
         display: block; /* Show the hamburger menu */
+        font-size: 1.5em;
+        cursor: pointer;
+        color: white;
+        margin-left: 20px;
     }
 
     .features .grid,
@@ -330,5 +612,38 @@ body {
 
     .notes iframe {
         height: 400px;
+    }
+
+    form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    #registeredMembers {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .navbar-right {
+        top: 10px;
+        right: 10px;
+        gap: 10px;
+    }
+
+    #profile-img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .dropdown-menu {
+        top: 45px;
+        width: 140px;
+    }
+
+    #auth-links a {
+        font-size: 0.9em;
     }
 }
