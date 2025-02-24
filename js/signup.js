@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(() => {
                 alert("Sign-up successful! Please log in.");
                 signupForm.reset();
-                window.location.href = "login.html"; // Redirect to login
+                window.location.href = "login.html";
             })
             .catch((error) => {
                 if (error.code === "auth/email-already-in-use") {
@@ -38,4 +38,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
     });
+});
+
+// Google Sign-Up (same as Google Sign-In)
+document.getElementById("google-signup").addEventListener("click", () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    auth.signInWithPopup(provider)
+        .then((result) => {
+            console.log("Google Sign-In Success:", result.user);
+            window.location.href = "index.html";
+        })
+        .catch((error) => {
+            console.error("Google Sign-In Error:", error.message);
+        });
 });
