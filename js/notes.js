@@ -194,14 +194,15 @@ downloadLink.addEventListener('click', function(event) {
             downloadText.style.display = 'inline';
             downloadedText.style.display = 'none';
 
-            document.getElementById("subject").value = '';
+            document.getElementById("class").value = '';
+            document.getElementById("subject").innerHTML = '<option value="">--Select Subject--</option>';
             document.getElementById("book").innerHTML = '<option value="">--Select Book--</option>';
             document.getElementById("chapter").innerHTML = '<option value="">--Select Chapter--</option>';
+            document.getElementById("subject").disabled = true;
             document.getElementById("book").disabled = true;
             document.getElementById("chapter").disabled = true;
             document.getElementById("pdf-preview").style.display = "none";
             downloadLink.style.display = "none";
-
         }, 1700);
 
     }, 800);
