@@ -47,14 +47,16 @@
     
         <section class="notes">
             <div class="dropdown-container">
-                <label for="subject">Select Subject:</label>
-                <select id="subject" onchange="updateBooks()">
+                <label for="class">Select Class:</label>               
+                <select id="class" onchange="updateSubjects()">
                     <option value="">--Select Subject--</option>
-                    <option value="hindi">Hindi</option>
-                    <option value="english">English</option>
-                    <option value="socialScience">Social Science</option>
-                    <option value="computer">Computer</option>
-                    <option value="science">Science</option>
+                    <option value="class8">Class 8</option>
+                    <option value="class9">Class 9</option>
+                </select>
+
+                <label for="subject">Select Subject:</label>               
+                <select id="subject" onchange="updateBooks()" disabled>
+                    <option value="">--Select Subject--</option>
                 </select>
         
                 <label for="book">Select Book:</label>
@@ -72,7 +74,11 @@
             <div id="preview-container" class="hidden">
                 <h2>Preview</h2>
                 <iframe id="pdf-preview" src="" frameborder="0"></iframe>
-                <a id="download-link" href="" download>Download PDF</a>
+                <a class="download-button" id="download-link" href="#">
+                    <span class="download-icon"></span>
+                    <span class="download-text">Download PDF</span>
+                <span class="downloaded-text">Downloaded!</span></a>
+                <audio id="whooshSound" src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_37d7ab61be.mp3?filename=whoosh-6315.mp3" preload="auto"></audio>
             </div>
         </section>
 
@@ -95,7 +101,7 @@
             </div>
         </footer>
     
-        <script src="js/notes.js"></script>
+        <script src="js/notes.js"></script>         
         
     </div>
 </body>
