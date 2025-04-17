@@ -28,7 +28,7 @@ const notesData = {
         },
         english: {
             "Moments": ["Coming Soon"],
-            "Beehive": ["Coming Soon"]
+            "Beehive": ["Chapter 1 - The Fun They Had"]
         },
         socialScience: {
             "History": ["Coming Soon"],
