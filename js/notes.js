@@ -31,9 +31,10 @@ const notesData = {
             "Beehive": ["Chapter 1 - The Fun They Had"]
         },
         socialScience: {
-            "History": ["Coming Soon"],
+            "History": ["Chapter 1 - The French Revolution"],
             "Civics": ["Coming Soon"],
-            "Geography": ["Chapter 1 - India-Size&Location"]
+            "Geography": ["Chapter 1 - India-Size&Location"],
+            "Economics": ["Coming Soon"]
         },
         optionSubject: {
             "Information Technology": ["Coming Soon"],
