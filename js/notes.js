@@ -34,7 +34,7 @@ const notesData = {
             "History": ["Chapter 1 - The French Revolution"],
             "Civics": ["Coming Soon"],
             "Geography": ["Chapter 1 - India-Size&Location"],
-            "Economics": ["Coming Soon"]
+            "Economics": ["Chapter 1 - The Story of Palampur"]
         },
         optionSubject: {
             "Information Technology": ["Coming Soon"],
