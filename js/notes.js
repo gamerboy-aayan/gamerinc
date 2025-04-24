@@ -24,7 +24,8 @@ const notesData = {
     class9: {
         hindi: {
             "Kshitij": ["Coming Soon"],
-            "Kritika": ["Coming Soon"]
+            "Kritika": ["Coming Soon"],
+            "Vyakaran":["Chapter 1 - Upsarg"]
         },
         english: {
             "Moments": ["Coming Soon"],
