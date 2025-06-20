@@ -32,7 +32,7 @@ const notesData = {
             "Beehive": ["Chapter 1 - The Fun They Had"]
         },
         socialScience: {
-            "History": ["Chapter 1 - The French Revolution"],
+            "History": ["Chapter 1 - The French Revolution", "Chapter 2 - The Russian Revolution"],
             "Civics": ["Coming Soon"],
             "Geography": ["Chapter 1 - India-Size&Location"],
             "Economics": ["Chapter 1 - The Story of Palampur"]
