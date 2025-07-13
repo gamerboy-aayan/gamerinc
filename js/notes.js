@@ -28,13 +28,13 @@ const notesData = {
             "Vyakaran":["Chapter 1 - Upsarg"]
         },
         english: {
-            "Moments": ["Coming Soon"],
-            "Beehive": ["Chapter 1 - The Fun They Had"]
+            "Moments": ["Chapter 1 - The Lost Child", "Chapter 2 - The Adventure of Toto", "Chapter 3 - Iswaran The Storyteller", "Chapter 4 - In the Kingdom of Fools",],
+            "Beehive": ["Chapter 1 - The Fun They Had", "Chapter 2 - The Sound of Music", "Chapter 3 - The Little Girl", "Chapter 4 - A Truly Beautiful Mind",]
         },
         socialScience: {
             "History": ["Chapter 1 - The French Revolution", "Chapter 2 - The Russian Revolution"],
             "Civics": ["Coming Soon"],
-            "Geography": ["Chapter 1 - India-Size&Location"],
+            "Geography": ["Chapter 1 - India-Size&Location", "Chapter 2 - Physical Features of India",],
             "Economics": ["Chapter 1 - The Story of Palampur"]
         },
         optionSubject: {
