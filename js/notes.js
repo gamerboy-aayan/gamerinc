@@ -33,8 +33,8 @@ const notesData = {
         },
         socialScience: {
             "History": ["Chapter 1 - The French Revolution", "Chapter 2 - The Russian Revolution"],
-            "Civics": ["Coming Soon"],
-            "Geography": ["Chapter 1 - India-Size&Location", "Chapter 2 - Physical Features of India",],
+            "Civics": ["Chapter 3 - Electoral Politics",],
+            "Geography": ["Chapter 1 - India-Size&Location", "Chapter 2 - Physical Features of India", "Chapter 3 - Drainage",],
             "Economics": ["Chapter 1 - The Story of Palampur"]
         },
         optionSubject: {
