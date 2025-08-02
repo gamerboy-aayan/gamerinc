@@ -24,7 +24,7 @@ const notesData = {
     class9: {
         hindi: {
             "Kshitij": ["Coming Soon"],
-            "Kritika": ["Coming Soon"],
+            "Kritika": ["Chapter 1 - Iss Jal Pralay Mei"],
             "Vyakaran":["Chapter 1 - Upsarg"]
         },
         english: {
@@ -209,3 +209,4 @@ downloadLink.addEventListener('click', function(event) {
 
     }, 800);
 });
+
