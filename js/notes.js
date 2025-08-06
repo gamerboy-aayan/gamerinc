@@ -25,17 +25,17 @@ const notesData = {
         hindi: {
             "Kshitij": ["Coming Soon"],
             "Kritika": ["Chapter 1 - Iss Jal Pralay Mei",],
-            "Vyakaran":["Chapter 1 - Upsarg"]
+            "Vyakaran":["Chapter 1 - Upsarg",]
         },
         english: {
             "Moments": ["Chapter 1 - The Lost Child", "Chapter 2 - The Adventure of Toto", "Chapter 3 - Iswaran The Storyteller", "Chapter 4 - In the Kingdom of Fools",],
             "Beehive": ["Chapter 1 - The Fun They Had", "Chapter 2 - The Sound of Music", "Chapter 3 - The Little Girl", "Chapter 4 - A Truly Beautiful Mind",]
         },
         socialScience: {
-            "History": ["Chapter 1 - The French Revolution", "Chapter 2 - The Russian Revolution"],
+            "History": ["Chapter 1 - The French Revolution", "Chapter 2 - The Russian Revolution",],
             "Civics": ["Chapter 3 - Electoral Politics",],
             "Geography": ["Chapter 1 - India-Size&Location", "Chapter 2 - Physical Features of India", "Chapter 3 - Drainage",],
-            "Economics": ["Chapter 1 - The Story of Palampur"]
+            "Economics": ["Chapter 1 - The Story of Palampur","Chapter 2 - People as Resource",]
         },
         optionSubject: {
             "Information Technology": ["Coming Soon"],
@@ -209,5 +209,6 @@ downloadLink.addEventListener('click', function(event) {
 
     }, 800);
 });
+
 
 
