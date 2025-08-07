@@ -11,7 +11,7 @@ const notesData = {
         },
         socialScience: {
             "History": ["Chapter 6 - British and Education"],
-            "Civics": ["Chapter 6 - Confronting Marginalisation", "Chapter 7 - Public Facilities and the Role of Government", "Chapter 8 - Law and Social Justice"],
+            "Civics": ["Chapter 6 - Confronting Marginalisation", "Chapter 7 - Public Facilities and the Role of Government", "Chapter 8 - Law and Social Justice",],
             "Geography": ["Chapter 5 - Agriculture and Crops", "Chapter 7 - Human Resources"]
         },
         computer: {
@@ -209,6 +209,7 @@ downloadLink.addEventListener('click', function(event) {
 
     }, 800);
 });
+
 
 
 
