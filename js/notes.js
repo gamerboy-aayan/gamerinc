@@ -11,7 +11,7 @@ const notesData = {
         },
         socialScience: {
             "History": ["Chapter 6 - British and Education"],
-            "Civics": ["Chapter 6 - Confronting Marginalisation", "Chapter 7 - Public Facilities and the Role of Government", "Chapter 8 - Law and Social Justice",],
+            "Civics": ["Chapter 6 - Confronting Marginalisation", "Chapter 7 - Public Facilities and the Role of Government", "Chapter 8 - Law and Social Justice"],
             "Geography": ["Chapter 5 - Agriculture and Crops", "Chapter 7 - Human Resources"]
         },
         computer: {
@@ -25,17 +25,17 @@ const notesData = {
         hindi: {
             "Kshitij": ["Chapter 1 - Do Bailo Ki Katha", "Chapter 2 - Lhasa Ki Or", "Chapter 3 - Upbhoktawad Ki Sanskriti", "Chapter 7 - Sakhiya Aur Sabad", "Chapter 9 - Sawaiye", "Chapter 10 - Kaidi Aur Kokila", "Chapter 11 - Gram Shree",],
             "Kritika": ["Chapter 1 - Iss Jal Pralay Mei",],
-            "Vyakaran":["Chapter 1 - Upsarg",]
+            "Vyakaran":["Chapter 1 - Upsarg"]
         },
         english: {
             "Moments": ["Chapter 1 - The Lost Child", "Chapter 2 - The Adventure of Toto", "Chapter 3 - Iswaran The Storyteller", "Chapter 4 - In the Kingdom of Fools", "Chapter 5 - The Happy Prince",],
             "Beehive": ["Chapter 1 - The Fun They Had", "Chapter 2 - The Sound of Music", "Chapter 3 - The Little Girl", "Chapter 4 - A Truly Beautiful Mind",]
         },
         socialScience: {
-            "History": ["Chapter 1 - The French Revolution", "Chapter 2 - The Russian Revolution",],
+            "History": ["Chapter 1 - The French Revolution", "Chapter 2 - The Russian Revolution"],
             "Civics": ["Chapter 1 - What is Democracy. Why Democracy.", "Chapter 2 - Constitutional Design", "Chapter 3 - Electoral Politics",],
             "Geography": ["Chapter 1 - India-Size&Location", "Chapter 2 - Physical Features of India", "Chapter 3 - Drainage",],
-            "Economics": ["Chapter 1 - The Story of Palampur","Chapter 2 - People as Resource",]
+            "Economics": ["Chapter 1 - The Story of Palampur"]
         },
         optionSubject: {
             "Information Technology": ["Coming Soon"],
@@ -205,17 +205,8 @@ downloadLink.addEventListener('click', function(event) {
             document.getElementById("chapter").disabled = true;
             document.getElementById("pdf-preview").style.display = "none";
             downloadLink.style.display = "none";
+
         }, 1700);
 
     }, 800);
 });
-
-
-
-
-
-
-
-
-
-
