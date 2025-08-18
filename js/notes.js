@@ -24,7 +24,7 @@ const notesData = {
     class9: {
         hindi: {
             "Kshitij": ["Chapter 1 - Do Bailo Ki Katha", "Chapter 2 - Lhasa Ki Or", "Chapter 3 - Upbhoktawad Ki Sanskriti", "Chapter 7 - Sakhiya Aur Sabad", "Chapter 9 - Sawaiye", "Chapter 10 - Kaidi Aur Kokila", "Chapter 11 - Gram Shree",],
-            "Kritika": ["Chapter 1 - Iss Jal Pralay Mei",],
+            "Kritika": ["Chapter 1 - Iss Jal Pralay Mei","Chapter 2 - Mere Sang Ki Aurtein",],
             "Vyakaran":["Chapter 1 - Upsarg"]
         },
         english: {
@@ -210,4 +210,5 @@ downloadLink.addEventListener('click', function(event) {
 
     }, 800);
 });
+
 
