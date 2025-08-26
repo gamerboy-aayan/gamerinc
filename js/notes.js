@@ -18,7 +18,7 @@ const notesData = {
             "Binary Folks": ["Chapter 6 - More on Visual Basic 2015", "Chapter 7 - Introduction to Java & BlueJ", "Chapter 8 - Multimedia", "Chapter 9 - Computer Ethics"]
         },
         science: {
-            "Science": ["Chapter 9 - Force And Pressure", "Chapter 10 - Some Natural Phenomena", "Chapter 11 - Light", "Chapter 12 - Stars and The Solar System", "Chapter 13 - Pollution of Air and Water"]
+            "Science": ["Whole Book"]
         }
     },
     class9: {
@@ -210,6 +210,7 @@ downloadLink.addEventListener('click', function(event) {
 
     }, 800);
 });
+
 
 
 
