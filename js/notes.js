@@ -35,7 +35,7 @@ const notesData = {
             "History": ["Chapter 1 - The French Revolution", "Chapter 2 - The Russian Revolution"],
             "Civics": ["Chapter 1 - What is Democracy Why Democracy", "Chapter 2 - Constitutional Design", "Chapter 3 - Electoral Politics",],
             "Geography": ["Chapter 1 - India-Size&Location", "Chapter 2 - Physical Features of India", "Chapter 3 - Drainage",],
-            "Economics": ["Chapter 1 - The Story of Palampur"]
+            "Economics": ["Chapter 1 - The Story of Palampur", "Chapter 2 - People as Resource",]
         },
         optionSubject: {
             "Information Technology": ["Coming Soon"],
@@ -210,6 +210,7 @@ downloadLink.addEventListener('click', function(event) {
 
     }, 800);
 });
+
 
 
 
