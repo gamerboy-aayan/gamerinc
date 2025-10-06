@@ -1,89 +1,101 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("registerForm");
-    const studentContainer = document.getElementById("registeredMembers");
+// js/team-admin.js
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize firebase app via your firebase-config.js (already included)
+  const adminUid = "YOUR_ADMIN_UID"; // <- replace with your UID
 
-    // Load stored student data
-    let students = JSON.parse(localStorage.getItem("students")) || [];
+  // references to DOM
+  const adminPanel = document.getElementById('adminPanel');
+  const memberForm = document.getElementById('memberForm');
+  const membersList = document.getElementById('membersList');
 
-    // Save students to localStorage
-    function saveStudents() {
-        localStorage.setItem("students", JSON.stringify(students));
+  // Wait for auth state (you have auth-state.js included) - but we'll add listener here:
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user && user.uid === adminUid) {
+      adminPanel.style.display = 'block';
+      loadMembers();
+    } else {
+      adminPanel.style.display = 'none';
     }
+  });
 
-    // Render the student list
-    function renderStudents() {
-        studentContainer.innerHTML = "";
-        students.forEach((student, index) => {
-            let studentBox = document.createElement("div");
-            studentBox.classList.add("student-box");
-            studentBox.innerHTML = `
-                <div class="student-header">
-                    <strong>${student.name}</strong>
-                    <span class="dots" onclick="toggleMenu(${index})">⋮</span>
-                </div>
-                <div class="menu" id="menu-${index}">
-                    <button onclick="editStudent(${index})">Edit</button>
-                    <button onclick="deleteStudent(${index})">Delete</button>
-                </div>
-                <p><strong>Class:</strong> ${student.class}</p>
-                <p><strong>Section:</strong> ${student.section}</p>
-                <p><strong>Roll:</strong> ${student.roll}</p>
-                <p><strong>Mobile:</strong> ${student.mobile}</p>
-            `;
-            studentContainer.appendChild(studentBox);
+  const dbRef = firebase.database().ref('members');
+
+  // Save / create member
+  memberForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const member = {
+      name: memberForm.m_name.value,
+      class: memberForm.m_class.value,
+      section: memberForm.m_section.value,
+      roll: memberForm.m_roll.value,
+      instagram: memberForm.m_instagram.value,
+      timestamp: Date.now()
+    };
+    const newRef = dbRef.push();
+    newRef.set(member)
+      .then(()=> {
+        memberForm.reset();
+      })
+      .catch(err => alert('Save failed: ' + err.message));
+  });
+
+  // Load and render members
+  function loadMembers() {
+    dbRef.on('value', snapshot => {
+      membersList.innerHTML = '';
+      const data = snapshot.val() || {};
+      Object.keys(data).forEach(key => {
+        const m = data[key];
+        const box = document.createElement('div');
+        box.className = 'student-box';
+        box.innerHTML = `
+          <div class="student-header">
+            <strong>${m.name}</strong>
+            <span class="dots" data-key="${key}">⋮</span>
+          </div>
+          <p><strong>Class:</strong> ${m.class}</p>
+          <p><strong>Section:</strong> ${m.section}</p>
+          <p><strong>Roll:</strong> ${m.roll}</p>
+          <p><strong>Instagram:</strong> <a target="_blank" href="https://instagram.com/${m.instagram}">@${m.instagram}</a></p>
+          <div class="menu" style="display:none">
+            <button class="editBtn" data-key="${key}">Edit</button>
+            <button class="delBtn" data-key="${key}">Delete</button>
+          </div>
+        `;
+        membersList.appendChild(box);
+      });
+
+      // attach events (delegation)
+      document.querySelectorAll('.dots').forEach(el=>{
+        el.addEventListener('click', (e) => {
+          const key = e.target.dataset.key;
+          const menu = e.target.parentElement.querySelector('.menu');
+          menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
         });
-
-        // Close the menu when clicking outside
-        document.addEventListener("click", (event) => {
-            if (!event.target.classList.contains("dots")) {
-                document.querySelectorAll(".menu").forEach(menu => menu.style.display = "none");
-            }
+      });
+      document.querySelectorAll('.editBtn').forEach(b=>{
+        b.addEventListener('click', (e) => {
+          const key = e.target.dataset.key;
+          dbRef.child(key).once('value').then(snap => {
+            const m = snap.val();
+            memberForm.m_name.value = m.name;
+            memberForm.m_class.value = m.class;
+            memberForm.m_section.value = m.section;
+            memberForm.m_roll.value = m.roll;
+            memberForm.m_instagram.value = m.instagram;
+            // remove record so submit creates a new one (or implement update)
+            dbRef.child(key).remove();
+          });
         });
-    }
-
-    // Handle form submission
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const student = {
-            name: form.name.value,
-            class: form.class.value,
-            section: form.section.value,
-            roll: form.roll.value,
-            mobile: form.mobile.value
-        };
-        students.push(student);
-        saveStudents();
-        renderStudents();
-        form.reset();
+      });
+      document.querySelectorAll('.delBtn').forEach(b=>{
+        b.addEventListener('click', (e) => {
+          const key = e.target.dataset.key;
+          if (confirm('Delete this member?')) {
+            dbRef.child(key).remove();
+          }
+        });
+      });
     });
-
-    // Toggle menu visibility
-    window.toggleMenu = (index) => {
-        document.querySelectorAll(".menu").forEach((menu, i) => {
-            menu.style.display = i === index && menu.style.display !== "block" ? "block" : "none";
-        });
-    };
-
-    // Edit a student entry
-    window.editStudent = (index) => {
-        let student = students[index];
-        form.name.value = student.name;
-        form.class.value = student.class;
-        form.section.value = student.section;
-        form.roll.value = student.roll;
-        form.mobile.value = student.mobile;
-
-        students.splice(index, 1);
-        saveStudents();
-        renderStudents();
-    };
-
-    // Delete a student entry
-    window.deleteStudent = (index) => {
-        students.splice(index, 1);
-        saveStudents();
-        renderStudents();
-    };
-
-    renderStudents();
+  }
 });
