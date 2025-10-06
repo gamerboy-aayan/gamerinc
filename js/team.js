@@ -1,7 +1,7 @@
 // js/team-admin.js
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize firebase app via your firebase-config.js (already included)
-  const adminUid = "YOUR_ADMIN_UID"; // <- replace with your UID
+  const adminUid = "LKV7zjfNJfeUhgZ7saRllX4G4ku2"; // <- replace with your UID
 
   // references to DOM
   const adminPanel = document.getElementById('adminPanel');
@@ -99,3 +99,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
