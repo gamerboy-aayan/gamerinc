@@ -455,34 +455,30 @@ h2 {
     top: 10px;
 }
 
-/* Updated Menu Styling */
-.menu {
-    display: none;
-    position: absolute;
-    top: 25px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.9); /* Dark Black Background */
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    padding: 5px;
-    z-index: 10;
-    color: white; /* White text for contrast */
+.student-box .student-header .menu {
+  display: none;
+  position: absolute;
+  top: 25px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 5px;
+  padding: 5px;
+  z-index: 10;
+  color: white;
 }
 
-/* Updated Button Styles for Better Visibility */
-.menu button {
-    background: none;
-    border: none;
-    padding: 5px;
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
-    color: white; /* White text for better contrast */
+.student-box .student-header .menu button {
+  background: none;
+  border: none;
+  padding: 5px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  color: white;
 }
 
-/* Hover Effect for Buttons */
-.menu button:hover {
-    background: rgba(255, 255, 255, 0.2); /* Light overlay effect */
+.student-box .student-header .menu button:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 #adminPanel { 
@@ -679,3 +675,4 @@ h2 {
         font-size: 0.9em;
     }
 }
+
