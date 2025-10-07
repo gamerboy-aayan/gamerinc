@@ -429,56 +429,62 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Student Box */
-.student-box {
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    max-width: 250px;
-    text-align: justify;
+/* Student Box */ 
+.student-box { 
+    background: white; 
+    padding: 15px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+    position: relative; 
+    max-width: 250px; 
+    text-align: justify; 
+} 
+
+#membersList { 
+  display: grid; 
+  gap: 20px; 
+  grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); 
 }
 
-/* Three-dots Menu */
-.student-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.dots {
-    cursor: pointer;
-    font-size: 18px;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-}
-
-.student-box .student-header .menu {
-  display: none;
-  position: absolute;
-  top: 25px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.9);
-  border-radius: 5px;
-  padding: 5px;
-  z-index: 10;
-  color: white;
-}
-
-.student-box .student-header .menu button {
-  background: none;
-  border: none;
-  padding: 5px;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  color: white;
-}
-
-.student-box .student-header .menu button:hover {
-  background: rgba(255, 255, 255, 0.2);
+/* Three-dots Menu */ 
+.student-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+} 
+.dots { 
+    cursor: pointer; 
+    font-size: 18px; 
+    position: absolute; 
+    right: 10px; 
+    top: 10px; 
+} 
+/* Updated Menu Styling */ 
+.menu { 
+    display: none; 
+    position: absolute; 
+    top: 25px; 
+    right: 10px; 
+    background: rgba(0, 0, 0, 0.9); 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+    padding: 5px; 
+    z-index: 10;
+    color: white;
+} 
+/* Updated Button Styles for Better Visibility */ 
+.menu button { 
+    background: none;
+    border: none; 
+    padding: 5px; 
+    width: 100%; 
+    text-align: left; 
+    cursor: pointer; 
+    color: white; 
+} 
+/* Hover Effect for Buttons */ 
+.menu button:hover { 
+    background: rgba(255, 255, 255, 0.2); 
 }
 
 #adminPanel { 
@@ -486,12 +492,6 @@ h2 {
   padding:20px; 
   border-radius:10px; 
   box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
-}
-
-#membersList { 
-  display:grid; 
-  gap:20px; 
-  grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); 
 }
 
 #adminPanel input { 
@@ -675,4 +675,3 @@ h2 {
         font-size: 0.9em;
     }
 }
-
