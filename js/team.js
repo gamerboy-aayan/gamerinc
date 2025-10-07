@@ -1,28 +1,30 @@
-// js/team-admin.js
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize firebase app via your firebase-config.js (already included)
-  const adminUid = "LKV7zjfNJfeUhgZ7saRllX4G4ku2"; // <- replace with your UID
 
-  // references to DOM
+  const adminUid = "LKV7zjfNJfeUhgZ7saRllX4G4ku2";
+
   const adminPanel = document.getElementById('adminPanel');
   const memberForm = document.getElementById('memberForm');
   const membersList = document.getElementById('membersList');
 
-  // Wait for auth state (you have auth-state.js included) - but we'll add listener here:
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user && user.uid === adminUid) {
-      adminPanel.style.display = 'block';
-      loadMembers();
-    } else {
-      adminPanel.style.display = 'none';
-    }
-  });
-
   const dbRef = firebase.database().ref('members');
 
-  // Save / create member
+  let isAdmin = false;
+
+  firebase.auth().onAuthStateChanged((user) => {
+    isAdmin = user && user.uid === adminUid;
+
+    // Show admin panel if admin
+    adminPanel.style.display = isAdmin ? 'block' : 'none';
+
+    // Load members with proper permission
+    loadMembers(isAdmin);
+  });
+
+  // Submit new member
   memberForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    if (!isAdmin) return; // just a safety check
+
     const member = {
       name: memberForm.m_name.value,
       class: memberForm.m_class.value,
@@ -31,72 +33,88 @@ document.addEventListener('DOMContentLoaded', () => {
       instagram: memberForm.m_instagram.value,
       timestamp: Date.now()
     };
-    const newRef = dbRef.push();
-    newRef.set(member)
-      .then(()=> {
-        memberForm.reset();
-      })
+
+    dbRef.push().set(member)
+      .then(() => memberForm.reset())
       .catch(err => alert('Save failed: ' + err.message));
   });
 
-  // Load and render members
-  function loadMembers() {
+  function loadMembers(isAdmin) {
     dbRef.on('value', snapshot => {
       membersList.innerHTML = '';
       const data = snapshot.val() || {};
+
       Object.keys(data).forEach(key => {
         const m = data[key];
         const box = document.createElement('div');
         box.className = 'student-box';
+
+        // Only show dots and menu if admin
+        const menuHtml = isAdmin
+          ? `<span class="dots" data-key="${key}">⋮</span>
+             <div class="menu" style="display:none">
+               <button class="editBtn" data-key="${key}">Edit</button>
+               <button class="delBtn" data-key="${key}">Delete</button>
+             </div>`
+          : '';
+
         box.innerHTML = `
           <div class="student-header">
             <strong>${m.name}</strong>
-            <span class="dots" data-key="${key}">⋮</span>
+            ${menuHtml}
           </div>
           <p><strong>Class:</strong> ${m.class}</p>
           <p><strong>Section:</strong> ${m.section}</p>
           <p><strong>Roll:</strong> ${m.roll}</p>
-          <p><strong>Instagram:</strong> <a target="_blank" href="https://instagram.com/${m.instagram}">@${m.instagram}</a></p>
-          <div class="menu" style="display:none">
-            <button class="editBtn" data-key="${key}">Edit</button>
-            <button class="delBtn" data-key="${key}">Delete</button>
-          </div>
+          <p><strong>Instagram:</strong> 
+            <a target="_blank" href="https://instagram.com/${m.instagram}">@${m.instagram}</a>
+          </p>
         `;
-        membersList.appendChild(box);
-      });
 
-      // attach events (delegation)
-      document.querySelectorAll('.dots').forEach(el=>{
-        el.addEventListener('click', (e) => {
-          const key = e.target.dataset.key;
-          const menu = e.target.parentElement.querySelector('.menu');
-          menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-        });
-      });
-      document.querySelectorAll('.editBtn').forEach(b=>{
-        b.addEventListener('click', (e) => {
-          const key = e.target.dataset.key;
-          dbRef.child(key).once('value').then(snap => {
-            const m = snap.val();
-            memberForm.m_name.value = m.name;
-            memberForm.m_class.value = m.class;
-            memberForm.m_section.value = m.section;
-            memberForm.m_roll.value = m.roll;
-            memberForm.m_instagram.value = m.instagram;
-            // remove record so submit creates a new one (or implement update)
-            dbRef.child(key).remove();
-          });
-        });
-      });
-      document.querySelectorAll('.delBtn').forEach(b=>{
-        b.addEventListener('click', (e) => {
-          const key = e.target.dataset.key;
-          if (confirm('Delete this member?')) {
-            dbRef.child(key).remove();
-          }
-        });
+        membersList.appendChild(box);
       });
     });
   }
-});
 
+  // Handle clicks on dots/edit/delete
+  membersList.addEventListener('click', (e) => {
+    if (!isAdmin) return; // only admin can interact
+
+    // Toggle menu
+    if (e.target.classList.contains('dots')) {
+      const menu = e.target.parentElement.querySelector('.menu');
+      if (!menu) return;
+      document.querySelectorAll('.menu').forEach(m => {
+        if (m !== menu) m.style.display = 'none';
+      });
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Edit button
+    if (e.target.classList.contains('editBtn')) {
+      const key = e.target.dataset.key;
+      dbRef.child(key).once('value').then(snap => {
+        const m = snap.val();
+        if (!m) return;
+
+        memberForm.m_name.value = m.name;
+        memberForm.m_class.value = m.class;
+        memberForm.m_section.value = m.section;
+        memberForm.m_roll.value = m.roll;
+        memberForm.m_instagram.value = m.instagram;
+
+        // Remove old entry so new edit will overwrite
+        dbRef.child(key).remove();
+      });
+    }
+
+    // Delete button
+    if (e.target.classList.contains('delBtn')) {
+      const key = e.target.dataset.key;
+      if (confirm('Delete this member?')) {
+        dbRef.child(key).remove();
+      }
+    }
+  });
+
+});
