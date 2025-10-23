@@ -23,7 +23,7 @@ const notesData = {
     },
     class9: {
         hindi: {
-            "Kshitij": ["Chapter 1 - Do Bailo Ki Katha", "Chapter 2 - Lhasa Ki Or", "Chapter 3 - Upbhoktawad Ki Sanskriti", "Chapter 7 - Sakhiya Aur Sabad", "Chapter 9 - Sawaiye", "Chapter 10 - Kaidi Aur Kokila", "Chapter 11 - Gram Shree",],
+            "Kshitij": ["Chapter 1 - Do Bailo Ki Katha", "Chapter 2 - Lhasa Ki Or", "Chapter 3 - Upbhoktawad Ki Sanskriti", "Chapter 4 - Savle Sapno Ki Yaad", "Chapter 7 - Sakhiya Aur Sabad", "Chapter 9 - Sawaiye", "Chapter 10 - Kaidi Aur Kokila", "Chapter 11 - Gram Shree",],
             "Kritika": ["Chapter 1 - Iss Jal Pralay Mei","Chapter 2 - Mere Sang Ki Aurtein",],
             "Vyakaran":["Chapter 1 - Upsarg"]
         },
@@ -34,7 +34,7 @@ const notesData = {
         socialScience: {
             "History": ["Chapter 1 - The French Revolution", "Chapter 2 - The Russian Revolution"],
             "Civics": ["Chapter 1 - What is Democracy Why Democracy", "Chapter 2 - Constitutional Design", "Chapter 3 - Electoral Politics",],
-            "Geography": ["Chapter 1 - India-Size&Location", "Chapter 2 - Physical Features of India", "Chapter 3 - Drainage",],
+            "Geography": ["Chapter 1 - India-Size&Location", "Chapter 2 - Physical Features of India", "Chapter 3 - Drainage", "Chapter 4 - Climate",],
             "Economics": ["Chapter 1 - The Story of Palampur", "Chapter 2 - People as Resource",]
         },
         optionSubject: {
@@ -210,6 +210,7 @@ downloadLink.addEventListener('click', function(event) {
 
     }, 800);
 });
+
 
 
 
