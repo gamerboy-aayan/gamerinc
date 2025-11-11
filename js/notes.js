@@ -32,7 +32,7 @@ const notesData = {
             "Beehive": ["Chapter 1 - The Fun They Had", "Chapter 2 - The Sound of Music", "Chapter 3 - The Little Girl", "Chapter 4 - A Truly Beautiful Mind",]
         },
         socialScience: {
-            "History": ["Chapter 1 - The French Revolution", "Chapter 2 - The Russian Revolution"],
+            "History": ["Chapter 1 - The French Revolution", "Chapter 2 - The Russian Revolution", "Chapter 5 - Pastoralists in the Modern World"],
             "Civics": ["Chapter 1 - What is Democracy Why Democracy", "Chapter 2 - Constitutional Design", "Chapter 3 - Electoral Politics",],
             "Geography": ["Chapter 1 - India-Size&Location", "Chapter 2 - Physical Features of India", "Chapter 3 - Drainage", "Chapter 4 - Climate",],
             "Economics": ["Chapter 1 - The Story of Palampur", "Chapter 2 - People as Resource", "Chapter 3 - Poverty As A Challenge",]
@@ -210,3 +210,4 @@ downloadLink.addEventListener('click', function(event) {
 
     }, 800);
 });
+
