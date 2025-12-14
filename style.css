@@ -65,16 +65,20 @@ body {
     display: flex;
 }
 
+.nav-links.active {
+    background: rgba(255, 255, 255, 0.7);
+}
+
 .navbar ul li {
     margin-left: 20px;
     font-weight: bold;
 }
 
 .navbar ul li a {
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-size: 1em;
-    transition: color 0.3s;
+    transition: color 0.5s;
 }
 
 .navbar ul li a:hover,
@@ -132,7 +136,7 @@ body {
     position: absolute;
     top: 50px;
     right: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     padding: 5px;
@@ -152,7 +156,8 @@ body {
 }
 
 .dropdown-menu button:hover {
-    background: #f0f0f036;
+    background: #e64a19;
+    transition: 0.5s;
 }
 
 /* Hero Section */
@@ -195,11 +200,22 @@ body {
     text-decoration: none;
     border-radius: 5px;
     margin-top: 10px;
-    transition: background-color 0.3s;
+    transition: ease-in-out 0.3s;
+    box-shadow: ease-in-out 0.3s;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
 }
 
 .hero .btn-primary:hover {
-    background-color: #e64a19;
+    background-color: #ff8a50;
+    transform: scale(1.08);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.hero .btn-primary:active {
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 /* Features Section */
@@ -277,7 +293,7 @@ body {
 }
 
 .notes a#download-link:hover {
-    background-color: #e64a19;
+    background-color: #7c1d00;
 }
 
 .download-icon {
@@ -617,6 +633,13 @@ h2 {
 
     .navbar ul li {
         margin: 10px 0;
+        
+    }
+
+    .navbar ul li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 1em;
     }
 
     .nav-links a {
