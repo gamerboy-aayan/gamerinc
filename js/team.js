@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  const adminUid = "LKV7zjfNJfeUhgZ7saRllX4G4ku2";
+  const adminUids = ["LKV7zjfNJfeUhgZ7saRllX4G4ku2", "rwvaNSBXZiakXoYHhvHKGWLlvbH3"];
 
   const adminPanel = document.getElementById('adminPanel');
   const memberForm = document.getElementById('memberForm');
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let isAdmin = false;
 
   firebase.auth().onAuthStateChanged((user) => {
-    isAdmin = user && user.uid === adminUid;
+    isAdmin = user && adminUids.includes(user.uid);
 
     // Show admin panel if admin
     adminPanel.style.display = isAdmin ? 'block' : 'none';
@@ -116,5 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
 
 });
