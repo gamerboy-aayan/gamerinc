@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("auth-links").style.display = "none";
             document.getElementById("profile-container").style.display = "block";
 
-            // ✅ Use `database` instead of `firebase.database()`
             database.ref("users/" + user.uid).once("value").then((snapshot) => {
                 const userData = snapshot.val();
                 if (userData && userData.profilePicture) {
@@ -17,30 +16,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // ✅ Define Elements
     const profileContainer = document.getElementById("profile-container");
     const profileImg = document.getElementById("profile-img");
     const profileUpload = document.getElementById("profile-upload");
     const profileMenu = document.getElementById("profile-menu");
     const changePicBtn = document.getElementById("change-pic");
     const removePicBtn = document.getElementById("remove-pic");
+    const logoutBtn = document.getElementById("logoutBtn");
 
     if (!profileContainer) {
         console.warn("Warning: profileContainer not found! Check your HTML.");
         return;
     }
 
-    // ✅ Show/hide dropdown menu when clicking profile picture
     profileImg.addEventListener("click", () => {
         profileMenu.style.display = profileMenu.style.display === "block" ? "none" : "block";
     });
 
-    // ✅ Click 'Change Profile Picture' → Open file upload
     changePicBtn.addEventListener("click", () => {
         profileUpload.click();
     });
 
-    // ✅ Upload new profile picture (Base64 stored in Firebase Database)
     profileUpload.addEventListener("change", (e) => {
         const file = e.target.files[0];
         if (!file) return;
@@ -56,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // ✅ Use `database` instead of `firebase.database()`
             database.ref("users/" + user.uid).update({
                 profilePicture: base64Image
             }).then(() => {
@@ -68,23 +63,33 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     });
 
-    // ✅ Remove profile picture
     removePicBtn.addEventListener("click", () => {
         const user = auth.currentUser;
         if (!user) return;
 
-        // ✅ Use `database` instead of `firebase.database()`
         database.ref("users/" + user.uid).update({
-            profilePicture: "default.jpg"
+            profilePicture: "pic/default.jpg"
         }).then(() => {
-            profileImg.src = "default.jpg";
+            profileImg.src = "pic/default.jpg";
             alert("Profile picture removed.");
         }).catch((error) => {
             console.error("Error removing profile picture:", error.message);
         });
     });
 
-    // ✅ Hide menu when clicking outside
+        logoutBtn.addEventListener("click", () => {
+        auth.signOut()
+            .then(() => {
+                profileMenu.style.display = "none";
+                console.log("User logged out successfully");
+                
+                window.location.href = "login.html";
+            })
+            .catch((error) => {
+                console.error("Logout failed:", error.message);
+            });
+    });
+
     document.addEventListener("click", (e) => {
         if (!profileContainer.contains(e.target)) {
             profileMenu.style.display = "none";
