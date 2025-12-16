@@ -37,15 +37,6 @@ const notesData = {
             "Geography": ["Chapter 1 - India-Size&Location", "Chapter 2 - Physical Features of India", "Chapter 3 - Drainage", "Chapter 4 - Climate",],
             "Economics": ["Chapter 1 - The Story of Palampur", "Chapter 2 - People as Resource", "Chapter 3 - Poverty As A Challenge",]
         },
-        optionSubject: {
-            "Information Technology": ["Coming Soon"],
-            "Physical Education": ["Coming Soon"]
-        },
-        science: {
-            "Biology": ["Coming Soon"],
-            "Chemistry": ["Coming Soon"],
-            "Physics": ["Coming Soon"]
-        }
     }
 };
 
@@ -210,5 +201,6 @@ downloadLink.addEventListener('click', function(event) {
 
     }, 800);
 });
+
 
 
