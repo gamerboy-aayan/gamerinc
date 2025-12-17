@@ -20,13 +20,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
         auth.createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
-                return userCredential.user.updateProfile({
+                const user = userCredential.user;
+
+                return user.updateProfile({
                     displayName: username,
                     photoURL: "default-profile-pic-url"
-                });
+                }).then(() => user);
+            })
+            .then((user) => {
+                return user.sendEmailVerification();
             })
             .then(() => {
-                alert("Sign-up successful! Please log in.");
+                alert("Verification email sent. Please verify your email before logging in.");
+                auth.signOut();
                 signupForm.reset();
                 window.location.href = "login.html";
             })
@@ -36,12 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     window.location.href = "login.html";
                 } else {
                     console.error("Error:", error.message);
+                    alert(error.message);
                 }
             });
     });
 });
 
-// Google Sign-Up (same as Google Sign-In)
 document.getElementById("google-signup").addEventListener("click", () => {
     const provider = new firebase.auth.GoogleAuthProvider();
 
