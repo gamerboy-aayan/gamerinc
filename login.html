@@ -44,15 +44,23 @@
     </header>
 
     <div id="login-modal">
-        <form id="login-form">
+        <form class="login-form" id="login-form">
+        <div class="bg-page">
+            <h1 style="font-family: Arial, Helvetica, sans-serif ; text-align: center; color: #ff81c6;">WELCOME BACK!</h1>
+        </div>
+
           <input type="email" id="login-email" placeholder="Email" required />
           <div class="password-container">
             <input type="password" id="login-password" placeholder="Password" required />
             <i class="fas fa-eye" id="toggle-login-password"></i>
         </div>
-          <p id="login-error" style="color: red; font-size: 14px; display: none;">The Password is incorrect</p>
+        <button id="resend-verification" style="display:none; padding: 0px; max-width: 40%; margin-left: 50%; font-size: smaller;">Resend Verification Email</button>
+        <p></p>
+        <p></p>
+          <p id="login-error" style="color: #ff0000; font-size: 14px; display: none;">The Password is incorrect</p>
           <button type="submit">Login</button>
-          <button id="google-login">Login with Google</button>
+          <button id="google-login">Login with Google <i class="fab fa-google"></i> </button>
+          <a class="redirect" href="signup.html">New User? Create Account</a>
         </form>
     </div>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
