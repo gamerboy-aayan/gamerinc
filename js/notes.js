@@ -1,4 +1,28 @@
-// Data Structure for Notes
+function waitForAuth(callback) {
+    const interval = setInterval(() => {
+        if (window.authReady) {
+            clearInterval(interval);
+            callback();
+        }
+    }, 50);
+}
+
+waitForAuth(() => {
+    if (!window.isUserLoggedIn) {
+        alert("You must be logged in to access notes.");
+        window.location.href = "login.html";
+        return;
+    }
+
+    if (!window.isUserVerified) {
+        alert("Please verify your email to access notes.");
+        window.location.href = "login.html";
+        return;
+    }
+
+    document.getElementById("notes-wrapper").style.display = "block";
+});
+
 const notesData = {
     class8: {
         hindi: {
@@ -23,7 +47,7 @@ const notesData = {
     },
     class9: {
         hindi: {
-            "Kshitij": ["Chapter 1 - Do Bailo Ki Katha", "Chapter 2 - Lhasa Ki Or", "Chapter 3 - Upbhoktawad Ki Sanskriti", "Chapter 4 - Savle Sapno Ki Yaad", "Chapter 7 - Sakhiya Aur Sabad", "Chapter 9 - Sawaiye", "Chapter 10 - Kaidi Aur Kokila", "Chapter 11 - Gram Shree", "Chapter 12 - Megh Aaye",],
+            "Kshitij": ["Chapter 1 - Do Bailo Ki Katha", "Chapter 2 - Lhasa Ki Or", "Chapter 3 - Upbhoktawad Ki Sanskriti", "Chapter 4 - Savle Sapno Ki Yaad", "Chapter 5 - Premchand Ke Phate Joote", "Chapter 7 - Sakhiya Aur Sabad", "Chapter 9 - Sawaiye", "Chapter 10 - Kaidi Aur Kokila", "Chapter 11 - Gram Shree", "Chapter 12 - Megh Aaye",],
             "Kritika": ["Chapter 1 - Iss Jal Pralay Mei","Chapter 2 - Mere Sang Ki Aurtein",],
             "Vyakaran":["Chapter 1 - Upsarg"]
         },
@@ -201,6 +225,3 @@ downloadLink.addEventListener('click', function(event) {
 
     }, 800);
 });
-
-
-

@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch((error) => {
                 if (error.code === "auth/email-already-in-use") {
                     alert("This email is already registered. Please log in instead.");
+                    window.location.href = "login.html";
                 } else {
                     console.error("Error:", error.message);
                 }

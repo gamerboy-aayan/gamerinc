@@ -1,20 +1,38 @@
 document.addEventListener("DOMContentLoaded", function () {
-    auth.onAuthStateChanged((user) => {
-        if (user) {
-            document.getElementById("auth-links").style.display = "none";
-            document.getElementById("profile-container").style.display = "block";
+    window.isUserLoggedIn = false;
+    window.isUserVerified = false;
+    window.authReady = false;
 
-            database.ref("users/" + user.uid).once("value").then((snapshot) => {
-                const userData = snapshot.val();
-                if (userData && userData.profilePicture) {
-                    document.getElementById("profile-img").src = userData.profilePicture;
-                }
-            });
+    auth.onAuthStateChanged((user) => {
+        const authLinks = document.getElementById("auth-links");
+        const profileContainer = document.getElementById("profile-container");
+        const profileImg = document.getElementById("profile-img");
+
+        if (user) {
+            window.isUserLoggedIn = true;
+            window.isUserVerified = user.emailVerified;
+
+            if (authLinks) authLinks.style.display = "none";
+            if (profileContainer) profileContainer.style.display = "block";
+
+            if (profileImg) {
+                database.ref("users/" + user.uid).once("value").then((snapshot) => {
+                    const userData = snapshot.val();
+                    if (userData?.profilePicture) {
+                        profileImg.src = userData.profilePicture;
+                    }
+                });
+            }
         } else {
-            document.getElementById("auth-links").style.display = "block";
-            document.getElementById("profile-container").style.display = "none";
+            window.isUserLoggedIn = false;
+            window.isUserVerified = false;
+
+            if (authLinks) authLinks.style.display = "block";
+            if (profileContainer) profileContainer.style.display = "none";
         }
-    });
+
+        window.authReady = true;
+});
 
     const profileContainer = document.getElementById("profile-container");
     const profileImg = document.getElementById("profile-img");

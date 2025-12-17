@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let isAdmin = false;
 
-
   firebase.auth().onAuthStateChanged((user) => {
     if (!user) {
       isAdmin = false;
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   });
 
-
   memberForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!isAdmin) return;
@@ -50,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(() => memberForm.reset())
       .catch(err => alert('Save failed: ' + err.message));
   });
-
 
   function loadMembers(isAdmin) {
     dbRef.off();
@@ -91,11 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-
   membersList.addEventListener('click', (e) => {
     if (!isAdmin) return;
 
-    
     if (e.target.classList.contains('dots')) {
       const menu = e.target.nextElementSibling;
       document.querySelectorAll('.menu').forEach(m => {
@@ -104,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
       menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
     }
 
-    
     if (e.target.classList.contains('editBtn')) {
       const key = e.target.dataset.key;
       dbRef.child(key).once('value').then(snap => {
@@ -120,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
         dbRef.child(key).remove();
       });
     }
-
 
     if (e.target.classList.contains('delBtn')) {
       const key = e.target.dataset.key;
