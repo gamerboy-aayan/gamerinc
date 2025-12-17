@@ -1,29 +1,41 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  const adminUids = ["LKV7zjfNJfeUhgZ7saRllX4G4ku2", "rwvaNSBXZiakXoYHhvHKGWLlvbH3"];
-
   const adminPanel = document.getElementById('adminPanel');
   const memberForm = document.getElementById('memberForm');
   const membersList = document.getElementById('membersList');
 
   const dbRef = firebase.database().ref('members');
+  const adminsRef = firebase.database().ref('admins');
 
   let isAdmin = false;
 
+
   firebase.auth().onAuthStateChanged((user) => {
-    isAdmin = user && adminUids.includes(user.uid);
+    if (!user) {
+      isAdmin = false;
+      adminPanel.style.display = 'none';
+      loadMembers(false);
+      return;
+    }
 
-    // Show admin panel if admin
-    adminPanel.style.display = isAdmin ? 'block' : 'none';
+    adminsRef.child(user.uid).once('value')
+      .then(snapshot => {
+        isAdmin = snapshot.val() === true;
 
-    // Load members with proper permission
-    loadMembers(isAdmin);
+        adminPanel.style.display = isAdmin ? 'block' : 'none';
+        loadMembers(isAdmin);
+      })
+      .catch(() => {
+        isAdmin = false;
+        adminPanel.style.display = 'none';
+        loadMembers(false);
+      });
   });
 
-  // Submit new member
+
   memberForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (!isAdmin) return; // just a safety check
+    if (!isAdmin) return;
 
     const member = {
       name: memberForm.m_name.value,
@@ -34,12 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
       timestamp: Date.now()
     };
 
-    dbRef.push().set(member)
+    dbRef.push(member)
       .then(() => memberForm.reset())
       .catch(err => alert('Save failed: ' + err.message));
   });
 
+
   function loadMembers(isAdmin) {
+    dbRef.off();
     dbRef.on('value', snapshot => {
       membersList.innerHTML = '';
       const data = snapshot.val() || {};
@@ -49,14 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const box = document.createElement('div');
         box.className = 'student-box';
 
-        // Only show dots and menu if admin
-        const menuHtml = isAdmin
-          ? `<span class="dots" data-key="${key}">⋮</span>
-             <div class="menu" style="display:none">
-               <button class="editBtn" data-key="${key}">Edit</button>
-               <button class="delBtn" data-key="${key}">Delete</button>
-             </div>`
-          : '';
+        const menuHtml = isAdmin ? `
+          <span class="dots" data-key="${key}">⋮</span>
+          <div class="menu" style="display:none">
+            <button class="editBtn" data-key="${key}">Edit</button>
+            <button class="delBtn" data-key="${key}">Delete</button>
+          </div>
+        ` : '';
 
         box.innerHTML = `
           <div class="student-header">
@@ -66,8 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
           <p><strong>Class:</strong> ${m.class}</p>
           <p><strong>Section:</strong> ${m.section}</p>
           <p><strong>Roll:</strong> ${m.roll}</p>
-          <p><strong>Instagram:</strong> 
-            <a target="_blank" href="https://instagram.com/${m.instagram}">@${m.instagram}</a>
+          <p><strong>Instagram:</strong>
+            <a target="_blank" href="https://instagram.com/${m.instagram}">
+              @${m.instagram}
+            </a>
           </p>
         `;
 
@@ -76,21 +91,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Handle clicks on dots/edit/delete
-  membersList.addEventListener('click', (e) => {
-    if (!isAdmin) return; // only admin can interact
 
-    // Toggle menu
+  membersList.addEventListener('click', (e) => {
+    if (!isAdmin) return;
+
+    
     if (e.target.classList.contains('dots')) {
-      const menu = e.target.parentElement.querySelector('.menu');
-      if (!menu) return;
+      const menu = e.target.nextElementSibling;
       document.querySelectorAll('.menu').forEach(m => {
         if (m !== menu) m.style.display = 'none';
       });
       menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
     }
 
-    // Edit button
+    
     if (e.target.classList.contains('editBtn')) {
       const key = e.target.dataset.key;
       dbRef.child(key).once('value').then(snap => {
@@ -103,12 +117,11 @@ document.addEventListener('DOMContentLoaded', () => {
         memberForm.m_roll.value = m.roll;
         memberForm.m_instagram.value = m.instagram;
 
-        // Remove old entry so new edit will overwrite
         dbRef.child(key).remove();
       });
     }
 
-    // Delete button
+
     if (e.target.classList.contains('delBtn')) {
       const key = e.target.dataset.key;
       if (confirm('Delete this member?')) {
@@ -116,6 +129,5 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
-
 
 });
