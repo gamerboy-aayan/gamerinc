@@ -281,6 +281,10 @@ body {
     margin-bottom: 10px;
 }
 
+.notes #pdf-preview {
+    pointer-events: none;
+}
+
 .notes a#download-link {
     display: inline-block;
     padding: 10px 20px;
@@ -342,6 +346,8 @@ body {
     gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 30px;
+    align-items: center;
 }
 
 .team .team-member {
@@ -351,6 +357,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 250px;
+    justify-content: center;
 }
 
 .team .team-member img {
@@ -636,7 +643,7 @@ body #login-modal, #signup-modal {
         position: absolute;
         top: 90px;
         left: 10px;
-        background-color: rgba(0, 0, 0, 0.7);
+        background-color: rgba(255, 255, 255, 0.7);
         padding: 10px;
         border-radius: 5px;
         width: 180px;
@@ -644,7 +651,7 @@ body #login-modal, #signup-modal {
     }   
 
     header .nav-links.active {
-        display: flex; /* Show the nav links when active */
+        display: flex; /* Show the nav links when active */  
     }
 
     .header {
