@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <p><strong>Roll:</strong> ${m.roll}</p>
           <p><strong>Instagram:</strong>
             <a target="_blank" href="https://instagram.com/${m.instagram}">
-              @${m.instagram}
+              ${m.instagram}
             </a>
           </p>
         `;
@@ -122,5 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
 
 });
