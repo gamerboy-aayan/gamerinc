@@ -1,28 +1,3 @@
-function waitForAuth(callback) {
-    const interval = setInterval(() => {
-        if (window.authReady) {
-            clearInterval(interval);
-            callback();
-        }
-    }, 50);
-}
-
-waitForAuth(() => {
-    if (!window.isUserLoggedIn) {
-        alert("You must be logged in to access notes.");
-        window.location.href = "login.html";
-        return;
-    }
-
-    if (!window.isUserVerified) {
-        alert("Please verify your email to access notes.");
-        window.location.href = "login.html";
-        return;
-    }
-
-    document.getElementById("notes-wrapper").style.display = "block";
-});
-
 const notesData = {
     class8: {
         hindi: {
@@ -154,37 +129,71 @@ function updateChapters() {
     }
 }
 
-// Function to show PDF preview and download link
 function showPreview() {
     const classLevel = document.getElementById("class").value;
     const subject = document.getElementById("subject").value;
     const book = document.getElementById("book").value;
     const chapter = document.getElementById("chapter").value;
+
     const pdfPreview = document.getElementById("pdf-preview");
     const downloadLink = document.getElementById("download-link");
 
-    if (chapter) {
-        const fileName = `${classLevel}_${subject}_${book}_${chapter}`.replace(/\s+/g, "_") + ".pdf";
-        const pdfURL = `notes/PDF/${fileName}`;
-
-        pdfPreview.src = pdfURL;
-        pdfPreview.style.display = "block";
-
-        downloadLink.href = pdfURL;
-        downloadLink.setAttribute('download', fileName);
-        downloadLink.style.display = "inline-block";
-    } else {
+    if (!chapter) {
         pdfPreview.style.display = "none";
         downloadLink.style.display = "none";
+        return;
     }
+
+    const user = auth.currentUser;
+
+    if (!user) {
+        alert("Please log in to preview notes.");
+        pdfPreview.style.display = "none";
+        downloadLink.style.display = "inline-block";
+        return;
+    }
+
+    if (!user.emailVerified) {
+        alert("Please verify your email to preview notes.");
+        pdfPreview.style.display = "none";
+        downloadLink.style.display = "none";
+        return;
+    }
+
+    const fileName =
+        `${classLevel}_${subject}_${book}_${chapter}`.replace(/\s+/g, "_") + ".pdf";
+    const pdfURL = `notes/PDF/${fileName}`;
+
+    pdfPreview.src = "";
+    pdfPreview.style.display = "block";
+
+    setTimeout(() => {
+        pdfPreview.src = pdfURL;
+    }, 100);
+
+    downloadLink.href = pdfURL;
+    downloadLink.setAttribute("download", fileName);
+    downloadLink.style.display = "inline-block";
 }
 
-// Download Animation + Sound Functionality
 const downloadLink = document.getElementById("download-link");
 const whooshSound = new Audio('js/Whoosh.mp3');
 
 downloadLink.addEventListener('click', function(event) {
     event.preventDefault();
+
+    const user = auth.currentUser;
+
+    if (!user) {
+        alert("You must log in to download this file.");
+        window.location.href = "login.html";
+        return;
+    }
+
+    if (!user.emailVerified) {
+        alert("Please verify your email to download files.");
+        return;
+    }
 
     const downloadText = downloadLink.querySelector('.download-text');
     const downloadedText = downloadLink.querySelector('.downloaded-text');
