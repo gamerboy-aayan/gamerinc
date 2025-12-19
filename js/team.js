@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
       class: memberForm.m_class.value,
       section: memberForm.m_section.value,
       roll: memberForm.m_roll.value,
-      instagram: memberForm.m_instagram.value,
+      instagram: memberForm.m_instagram.value.replace(/^@+/, '').trim(),
       timestamp: Date.now()
     };
 
@@ -57,6 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       Object.keys(data).forEach(key => {
         const m = data[key];
+
+        if (!m.instagram || m.instagram === '@') {
+          m.instagram = '';
+        }
+
         const box = document.createElement('div');
         box.className = 'student-box';
 
@@ -76,11 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
           <p><strong>Class:</strong> ${m.class}</p>
           <p><strong>Section:</strong> ${m.section}</p>
           <p><strong>Roll:</strong> ${m.roll}</p>
-          <p><strong>Instagram:</strong>
-            <a target="_blank" href="https://instagram.com/${m.instagram}">
-              @${m.instagram}
-            </a>
-          </p>
+          ${m.instagram ? `
+            <p><strong>Instagram:</strong>
+              <a target="_blank" href="https://instagram.com/${m.instagram}">
+                @${m.instagram}
+              </a>
+            </p>
+          ` : ''}
         `;
 
         membersList.appendChild(box);
@@ -123,6 +130,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-
 });
-
