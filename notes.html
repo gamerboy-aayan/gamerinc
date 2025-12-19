@@ -14,12 +14,28 @@
 
 </head>
 <body>
+    <div id="auth-loader-overlay">
+        <div class="loader">
+            <div class="box1"></div>
+            <div class="box2"></div>
+            <div class="box3"></div>
+        </div>
+    </div>
     <div class = "wrapper">
         <header class="header">
             <div class="container">
             <h1 class="logo">Gamer Inc</h1>
                 <nav class="navbar">
-                    <div class="menu-toggle" id="menuToggle">☰</div>
+                    <button class="menu-toggle" id="menuToggle">
+                        <span class="icon">
+                            <svg viewBox="0 0 175 80" width="40" height="40">
+                                <rect width="80" height="15" fill="#ff5722" rx="10"></rect>
+                                <rect y="30" width="80" height="15" fill="#ff5722" rx="10"></rect>
+                                <rect y="60" width="80" height="15" fill="#ff5722" rx="10"></rect>
+                            </svg>
+                        </span>
+                        <span class="text">MENU</span>
+                    </button>
                     <ul class="nav-links" id="navLinks">
                         <li><a href="index.html" data-link>Home</a></li>
                         <li><a href="notes.html" class="active" data-link>Notes</a></li>
@@ -50,7 +66,7 @@
     
     
         <section class="notes">
-            <div style="font-family: Arial, sans-serif; line-height: 1.7; color: #222; padding: 20px;">
+            <div style="font-family: Arial, sans-serif; line-height: 1.7; color: #ffffff; padding: 20px;">
                 <h2 style="color: #ff5722;">📘 Notes Section – Your Chapter, Your Way!</h2>
 
                 <p>Welcome to the heart of <strong>GamerInc.me</strong> – the <strong>Notes Page</strong>! Whether you're reviewing for a test, catching up on missed chapters, or just want to study smart, this is where all your learning materials live, neatly sorted and always ready.</p>
@@ -77,7 +93,7 @@
 
                 <p>This isn’t just a note-sharing site – it’s a team effort by students, for students. Designed by <strong>GamerBoy_Aayan</strong>, but supported by everyone who believes in helping each other succeed.</p>
 
-                <blockquote style="text-align: center; margin: 20px 0; padding: 10px 15px; background-color: #ffffff; border-left: 5px solid #ff5722; font-style: italic;">
+                <blockquote style="text-align: center; margin: 20px 0; padding: 10px 15px; background-color: #ffffff; border-left: 5px solid #ff5722; font-style: italic; color:#ff5722">
                     “Study Hard, have Fun and make your Grades A1.”
                 </blockquote>
 
@@ -111,7 +127,7 @@
     
             <div id="preview-container" class="hidden">
                 <h2>Preview</h2>
-                <iframe id="pdf-preview" src="" frameborder="0"></iframe>
+                <iframe id="pdf-preview" src="" frameborder="0" style="background-color: #ffffff;"></iframe>
                 <a class="download-button" id="download-link" href="#">
                     <span class="download-icon"></span>
                     <span class="download-text">Download PDF</span>

@@ -13,12 +13,28 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <div id="auth-loader-overlay">
+        <div class="loader">
+            <div class="box1"></div>
+            <div class="box2"></div>
+            <div class="box3"></div>
+        </div>
+    </div>
     <div class="wrapper">
         <header class="header">
             <div class="container">
             <h1 class="logo">Gamer Inc</h1>
                 <nav class="navbar">
-                    <div class="menu-toggle" id="menuToggle">☰</div>
+                    <button class="menu-toggle" id="menuToggle">
+                        <span class="icon">
+                            <svg viewBox="0 0 175 80" width="40" height="40">
+                                <rect width="80" height="15" fill="#ff5722" rx="10"></rect>
+                                <rect y="30" width="80" height="15" fill="#ff5722" rx="10"></rect>
+                                <rect y="60" width="80" height="15" fill="#ff5722" rx="10"></rect>
+                            </svg>
+                        </span>
+                        <span class="text">MENU</span>
+                    </button>
                     <ul class="nav-links" id="navLinks">
                         <li><a href="index.html" class="active" data-link>Home</a></li>
                         <li><a href="notes.html" data-link>Notes</a></li>

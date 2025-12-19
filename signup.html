@@ -10,11 +10,27 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <div id="auth-loader-overlay">
+        <div class="loader">
+            <div class="box1"></div>
+            <div class="box2"></div>
+            <div class="box3"></div>
+        </div>
+    </div>
     <header class="header">
         <div class="container">
         <h1 class="logo">Gamer Inc</h1>
             <nav class="navbar">
-                <div class="menu-toggle" id="menuToggle">☰</div>
+                <button class="menu-toggle" id="menuToggle">
+                    <span class="icon">
+                        <svg viewBox="0 0 175 80" width="40" height="40">
+                            <rect width="80" height="15" fill="#ff5722" rx="10"></rect>
+                            <rect y="30" width="80" height="15" fill="#ff5722" rx="10"></rect>
+                            <rect y="60" width="80" height="15" fill="#ff5722" rx="10"></rect>
+                        </svg>
+                    </span>
+                    <span class="text">MENU</span>
+                </button>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="index.html" class="active" data-link>Home</a></li>
                     <li><a href="notes.html" data-link>Notes</a></li>
@@ -44,19 +60,40 @@
     </header>
 
     <div id="signup-modal">
-        <form id="signup-form">
-            <input type="text" id="signup-username" placeholder="Username" required />
-            <input type="email" id="signup-email" placeholder="Email" required />
-            <div class="password-container">
-                <input type="password" id="signup-password" placeholder="Password" required />
+        <form class="form" id="signup-form">
+            <p class="title">Register </p>
+            <p class="message">Signup now and get full access to our app. </p>
+            <div class="flex">
+                <label>
+                    <input class="input" type="text" id="firstname" placeholder="" required="">
+                    <span>Firstname</span>
+                </label>
+
+                <label>
+                    <input class="input" type="text" id="lastname" placeholder="" required="">
+                    <span>Lastname</span>
+                </label>
+            </div>  
+                    
+            <label>
+                <input class="input" type="email" id="signup-email" placeholder="" required="">
+                <span>Email</span>
+            </label> 
+                   
+            <label class="password-container">
+                <input class="input" type="password" id="signup-password" placeholder="" required="">
+                <span>Password</span>
                 <i class="fas fa-eye" id="toggle-signup-password"></i>
-            </div>
-            <div class="password-container">
-                <input type="password" id="signup-confirm-password" placeholder="Password" required />
+            </label>
+
+            <label class="password-container">
+                <input class="input" type="password" id="signup-confirm-password" placeholder="" required="">
+                <span>Confirm password</span>
                 <i class="fas fa-eye" id="toggle-signup-confirm-password"></i>
-            </div>
-            <button type="submit">SignUp</button>
-            <button id="google-signup">Sign up with Google</button>
+            </label>
+
+            <button class="submit" type="submit">Sign Up</button>
+            <p class="signin">Already have an acount ? <a href="login.html">Login</a> </p>
         </form>
     </div>
 
