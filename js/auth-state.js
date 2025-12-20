@@ -1,11 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const LOADER_MIN_TIME = 3000; // 3 seconds
-    const loaderStartTime = Date.now();
 
+  /* ---------- CONFIG ---------- */
+  const LOADER_MIN_TIME = 3000; // 3 seconds
+  const PUBLIC_PAGES = ["login.html", "signup.html"];
+
+  const loaderStartTime = Date.now();
+  const currentPage = location.pathname.split("/").pop() || "index.html";
+  const isPublicPage = PUBLIC_PAGES.includes(currentPage);
+
+  /* ---------- GLOBAL FLAGS ---------- */
   window.isUserLoggedIn = false;
   window.isUserVerified = false;
   window.authReady = false;
 
+  /* ---------- ELEMENTS ---------- */
   const authLoader = document.getElementById("auth-loader-overlay");
 
   const authLinks = document.getElementById("auth-links");
@@ -17,8 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const removePicBtn = document.getElementById("remove-pic");
   const logoutBtn = document.getElementById("logoutBtn");
 
-  // ---------- AUTH STATE ----------
+  /* ---------- AUTH STATE ---------- */
   auth.onAuthStateChanged((user) => {
+
     if (user) {
       window.isUserLoggedIn = true;
       window.isUserVerified = user.emailVerified;
@@ -27,16 +36,15 @@ document.addEventListener("DOMContentLoaded", function () {
       if (profileContainer) profileContainer.style.display = "block";
 
       if (profileImg) {
-        database
-          .ref("users/" + user.uid)
+        database.ref("users/" + user.uid)
           .once("value")
           .then((snapshot) => {
             const userData = snapshot.val();
-            profileImg.src =
-              userData?.profilePicture || "pic/default.jpg";
+            profileImg.src = userData?.profilePicture || "pic/default.jpg";
           });
       }
-    } else {
+    } 
+    else {
       window.isUserLoggedIn = false;
       window.isUserVerified = false;
 
@@ -44,27 +52,30 @@ document.addEventListener("DOMContentLoaded", function () {
       if (profileContainer) profileContainer.style.display = "none";
     }
 
-    // 🔑 AUTH IS READY
+    /* ---------- AUTH READY ---------- */
     window.authReady = true;
 
-    // 🔥 HIDE LOADER (smooth)
+    /* ---------- LOADER CONTROL (ALWAYS 3s) ---------- */
     if (authLoader) {
-    const elapsed = Date.now() - loaderStartTime;
-    const remainingTime = Math.max(LOADER_MIN_TIME - elapsed, 0);
+      const elapsed = Date.now() - loaderStartTime;
+      const remaining = Math.max(LOADER_MIN_TIME - elapsed, 0);
 
-    setTimeout(() => {
+      setTimeout(() => {
         authLoader.classList.add("hidden");
-    }, remainingTime);
+
+        // 🔐 Redirect ONLY after loader finishes
+        if (!window.isUserLoggedIn && !isPublicPage) {
+          window.location.replace("login.html");
+        }
+
+      }, remaining);
     }
   });
 
-  // ---------- SAFETY CHECK ----------
-  if (!profileContainer) {
-    console.warn("profile-container not found — skipping profile logic");
-    return;
-  }
+  /* ---------- SAFETY CHECK ---------- */
+  if (!profileContainer) return;
 
-  // ---------- PROFILE MENU ----------
+  /* ---------- PROFILE MENU ---------- */
   profileImg?.addEventListener("click", () => {
     profileMenu.style.display =
       profileMenu.style.display === "block" ? "none" : "block";
@@ -79,25 +90,17 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!file) return;
 
     const user = auth.currentUser;
-    if (!user) {
-      alert("You must be logged in to upload a profile picture.");
-      return;
-    }
+    if (!user) return;
 
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       const base64Image = reader.result;
 
-      database
-        .ref("users/" + user.uid)
+      database.ref("users/" + user.uid)
         .update({ profilePicture: base64Image })
         .then(() => {
           profileImg.src = base64Image;
-          alert("Profile picture updated successfully!");
-        })
-        .catch((err) => {
-          console.error("Profile update failed:", err.message);
         });
     };
   });
@@ -106,35 +109,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const user = auth.currentUser;
     if (!user) return;
 
-    database
-      .ref("users/" + user.uid)
+    database.ref("users/" + user.uid)
       .update({ profilePicture: "pic/default.jpg" })
       .then(() => {
         profileImg.src = "pic/default.jpg";
-        alert("Profile picture removed.");
-      })
-      .catch((err) => {
-        console.error("Remove picture failed:", err.message);
       });
   });
 
-  // ---------- LOGOUT ----------
+  /* ---------- LOGOUT ---------- */
   logoutBtn?.addEventListener("click", () => {
-    auth
-      .signOut()
-      .then(() => {
-        profileMenu.style.display = "none";
-        window.location.href = "login.html";
-      })
-      .catch((err) => {
-        console.error("Logout failed:", err.message);
-      });
+    auth.signOut().then(() => {
+      window.location.replace("login.html");
+    });
   });
 
-  // ---------- CLOSE MENU ON OUTSIDE CLICK ----------
+  /* ---------- CLOSE MENU ---------- */
   document.addEventListener("click", (e) => {
     if (!profileContainer.contains(e.target)) {
       profileMenu.style.display = "none";
     }
   });
+
 });
