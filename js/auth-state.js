@@ -55,19 +55,13 @@ document.addEventListener("DOMContentLoaded", function () {
     /* ---------- AUTH READY ---------- */
     window.authReady = true;
 
-    /* ---------- LOADER CONTROL (ALWAYS 3s) ---------- */
+    /* ---------- LOADER (ALWAYS 3s) ---------- */
     if (authLoader) {
       const elapsed = Date.now() - loaderStartTime;
       const remaining = Math.max(LOADER_MIN_TIME - elapsed, 0);
 
       setTimeout(() => {
         authLoader.classList.add("hidden");
-
-        // 🔐 Redirect ONLY after loader finishes
-        if (!window.isUserLoggedIn && !isPublicPage) {
-          window.location.replace("login.html");
-        }
-
       }, remaining);
     }
   });
@@ -116,10 +110,11 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 
-  /* ---------- LOGOUT ---------- */
+  /* ---------- LOGOUT (NO REDIRECT) ---------- */
   logoutBtn?.addEventListener("click", () => {
     auth.signOut().then(() => {
-      window.location.replace("login.html");
+      profileMenu.style.display = "none";
+      // Stay on the same page. Auth UI updates automatically.
     });
   });
 
