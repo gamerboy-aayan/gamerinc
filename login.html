@@ -25,7 +25,7 @@
                     <span class="text">MENU</span>
                 </button>
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html" class="active" data-link>Home</a></li>
+                    <li><a href="index.html" data-link>Home</a></li>
                     <li><a href="notes.html" data-link>Notes</a></li>
                     <li><a href="features.html" data-link>Features</a></li>
                     <li><a href="team.html" data-link>Our Team</a></li>
@@ -41,6 +41,7 @@
                     
                         <!-- Dropdown menu -->
                         <div id="profile-menu" class="dropdown-menu">
+                            <p id="profile-name"></p>
                             <button id="change-pic">Change Profile Picture</button>
                             <button id="remove-pic">Remove Profile Picture</button>
                             <button id="logoutBtn">Logout</button>
@@ -51,27 +52,34 @@
 
         </div>
     </header>
-
+<main class="auth-page">
     <div id="login-modal">
-        <form class="login-form" id="login-form">
-        <div class="bg-page">
-            <h1 style="font-family: Arial, Helvetica, sans-serif ; text-align: center; color: #ff81c6;">WELCOME BACK!</h1>
-        </div>
-
-          <input type="email" id="login-email" placeholder="Email" required />
-          <div class="password-container">
-            <input type="password" id="login-password" placeholder="Password" required />
+        <form class="form" id="login-form">
+        <p class="title">WELCOME BACK</p>
+        <p class="message">Glad to see you back.</p>
+        <label>
+            <input class="input" type="email" id="login-email" placeholder="" required="">
+            <span>Email</span>
+        </label>
+        <label class="password-container">
+            <input class="input" type="password" id="login-password" placeholder="" required="">
+            <span>Password</span>
             <i class="fas fa-eye" id="toggle-login-password"></i>
-        </div>
+        </label>
+
         <button id="resend-verification" style="display:none; padding: 0px; max-width: 40%; margin-left: 50%; font-size: smaller;">Resend Verification Email</button>
-        <p></p>
-        <p></p>
-          <p id="login-error" style="color: #ff0000; font-size: 14px; display: none;">The Password is incorrect</p>
-          <button type="submit">Login</button>
-          <button id="google-login">Login with Google <i class="fab fa-google"></i> </button>
-          <a class="redirect" href="signup.html">New User? Create Account</a>
+
+        <p id="login-error" style="color: #ff0000; font-size: 14px; display: none;">The Password is incorrect</p>
+        <button type="submit" class="submit">Login</button>
+
+        <button type="button" id="google-login" class="submit">
+            <i class="fab fa-google"></i> Login with Google
+        </button>
+          <p class="login">New User ? <a href="signup.html">Sign Up</a> </p>
         </form>
     </div>
+</main>
+
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database-compat.js"></script>

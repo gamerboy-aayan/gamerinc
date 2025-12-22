@@ -25,7 +25,7 @@
                     <span class="text">MENU</span>
                 </button>
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html" class="active" data-link>Home</a></li>
+                    <li><a href="index.html" data-link>Home</a></li>
                     <li><a href="notes.html" data-link>Notes</a></li>
                     <li><a href="features.html" data-link>Features</a></li>
                     <li><a href="team.html" data-link>Our Team</a></li>
@@ -41,6 +41,7 @@
                     
                         <!-- Dropdown menu -->
                         <div id="profile-menu" class="dropdown-menu">
+                            <p id="profile-name"></p>
                             <button id="change-pic">Change Profile Picture</button>
                             <button id="remove-pic">Remove Profile Picture</button>
                             <button id="logoutBtn">Logout</button>
@@ -51,7 +52,7 @@
 
         </div>
     </header>
-
+<main class="auth-page">
     <div id="signup-modal">
         <form class="form" id="signup-form">
             <p class="title">Register </p>
@@ -86,9 +87,13 @@
             </label>
 
             <button class="submit" type="submit">Sign Up</button>
-            <p class="signin">Already have an acount ? <a href="login.html">Login</a> </p>
+            <button type="button" id="google-signup" class="submit">
+                <i class="fab fa-google"></i> Sign up with Google
+            </button>
+            <p class="signin">Already have an account ? <a href="login.html">Login</a> </p>
         </form>
     </div>
+</main>
 
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>

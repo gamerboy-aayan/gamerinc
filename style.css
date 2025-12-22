@@ -65,7 +65,11 @@ body {
 }
 
 .nav-links.active {
-    background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-sizing: 0 8px 30px rgba(0,0,0,0.4);
+  border-radius: 5px;
 }
 
 .navbar ul li {
@@ -83,7 +87,6 @@ body {
 .navbar ul li a:hover,
 .navbar ul li a.active {
     color: #ff5722;
-    border-bottom: 2px solid #ff5722;
 }
 
 /* 🌟 RIGHT-SIDE CONTAINER (LOGIN/SIGNUP & PROFILE PICTURE) */
@@ -136,28 +139,52 @@ body {
     position: absolute;
     top: 50px;
     right: 0;
-    background: rgba(255, 255, 255, 0.7);
+    width: max-content;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
     padding: 5px;
     width: 150px;
     z-index: 1000;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.dropdown-menu::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.2);
+    border-radius: inherit;
+    z-index: -1;
+}
+
+.dropdown-menu p{
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  border-radius: 5px;
+  padding: 8px 8px 8px 8px;
+  font-weight: bold;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
 /* 🌟 DROPDOWN BUTTON STYLES */
 .dropdown-menu button {
-    width: 100%;
-    padding: 8px;
-    background: none;
-    border: none;
-    text-align: left;
-    cursor: pointer;
-    font-size: 14px;
+  width: 100%;
+  padding: 8px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  color:#ffffff;
+  font-weight: 500;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s;
 }
 
 .dropdown-menu button:hover {
-    background: #e64a19;
-    transition: 0.5s;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  border-radius: 5px;
 }
 
 /* Hero Section */
@@ -570,62 +597,29 @@ h2 {
 }
 
 /* Center the signup form */
-#signup-modal, #login-modal {
+.auth-page {
+    min-height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#signup-modal,
+#login-modal {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full viewport height */
+
+    min-height: calc(100vh - 120px); /* header + footer buffer */
+    padding: 40px 20px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-body #login-modal{
-    background: #ffaad9;
+body .auth-page{
+    background: #6d6d6d;
 }
-
-#login-form {
-    background-image: url(pics/login.webp);
-    background-size:300%;
-    background-position: center;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Adds space between fields */
-    width: 300px; /* Adjust width */
-}
-
-/* Input field styling */
-#login-form input {
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%; /* Make input fields full width */
-}
-
-/* Increase email field width */
-#login-email {
-    width: 100%; /* Expand email field */
-}
-
-/* Style the button */
-#login-form button {
-    background: #ff81c6;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.1em;
-    width: 100%;
-}
-
-#login-form button:hover {
-    background: #ffaad9;
-    transition: 0.3s;
-    transform: scale(105%);
-}
-
 
 .password-container i {
     position: absolute;
@@ -633,16 +627,6 @@ body #login-modal{
     top: 15px;
     cursor: pointer;
     color: #555;
-}
-
-.redirect {
-    text-align: right;
-    font-size: smaller;
-    color: #ff81c6;
-}
-
-.redirect:hover {
-    color: #ffaad9;
 }
 
 .form {
@@ -692,7 +676,8 @@ body #login-modal{
 }
 
 .message, 
-.signin {
+.signin,
+.login {
   font-size: 14.5px;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -705,7 +690,8 @@ body #login-modal{
   text-decoration: underline #ff7146;
 }
 
-.signin a {
+.signin a,
+.login a {
   color: #ff5722;
 }
 
@@ -784,7 +770,6 @@ body #login-modal{
   }
 }
 
-/* From Uiverse.io by alexruix */ 
 #auth-loader-overlay {
   position: fixed;
   inset: 0;
@@ -1039,22 +1024,21 @@ body #login-modal{
 /* Responsive Design */
 @media (max-width: 768px) {
     header .nav-links {
-        margin-top:20px;
-        margin-left:10px;
-        display: none; /* Hidden by default */
-        flex-direction: column;
-        position: absolute;
-        top: 90px;
-        left: 10px;
-        background-color: rgba(255, 255, 255, 0.7);
-        padding: 10px;
-        border-radius: 5px;
-        width: 180px;
-        z-index: 1000; /* Ensure it is above other elements */
+      margin-top:20px;
+      margin-left:10px;
+      display: none; /* Hidden by default */
+      flex-direction: column;
+      position: absolute;
+      top: 90px;
+      left: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      width: 180px;
+      z-index: 1000;
     }   
 
     header .nav-links.active {
-        display: flex; /* Show the nav links when active */  
+        display: flex; 
     }
 
     .header {
@@ -1068,9 +1052,11 @@ body #login-modal{
     }
 
     .navbar ul li a {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    font-size: 1em;
+      color: #ffffff;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-decoration: none;
+      font-size: 1em;
+      font-weight:bold;
     }
 
     .nav-links a {
@@ -1170,6 +1156,10 @@ body #login-modal{
 
     #auth-links a {
         font-size: 0.9em;
+    }
+
+    .form label{
+      width:100%;
     }
 
 }

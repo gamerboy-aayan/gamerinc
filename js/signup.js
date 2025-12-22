@@ -2,61 +2,75 @@ document.addEventListener("DOMContentLoaded", function () {
     const signupForm = document.getElementById("signup-form");
 
     if (!signupForm) {
-        console.warn("Warning: signup-form not found! signup.js is running on the wrong page.");
+        console.warn("signup-form not found. signup.js loaded on the wrong page.");
         return;
     }
 
-    signupForm.addEventListener("submit", (e) => {
+    signupForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        const email = document.getElementById("signup-email").value;
+        const firstName = document.getElementById("firstname").value.trim();
+        const lastName = document.getElementById("lastname").value.trim();
+        const email = document.getElementById("signup-email").value.trim();
         const password = document.getElementById("signup-password").value;
-        const username = document.getElementById("signup-username").value;
+        const confirmPassword = document.getElementById("signup-confirm-password").value;
 
-        if (password.length < 6) {
-            alert("Password must be at least 6 characters long!");
+        if (!firstName || !lastName) {
+            alert("Please enter your first and last name.");
             return;
         }
 
-        auth.createUserWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
+        if (password.length < 6) {
+            alert("Password must be at least 6 characters long.");
+            return;
+        }
 
-                return user.updateProfile({
-                    displayName: username,
-                    photoURL: "default-profile-pic-url"
-                }).then(() => user);
-            })
-            .then((user) => {
-                return user.sendEmailVerification();
-            })
-            .then(() => {
-                alert("Verification email sent. Please verify your email before logging in.");
-                auth.signOut();
-                signupForm.reset();
-                window.location.href = "login.html";
-            })
-            .catch((error) => {
-                if (error.code === "auth/email-already-in-use") {
-                    alert("This email is already registered. Please log in instead.");
-                    window.location.href = "login.html";
-                } else {
-                    console.error("Error:", error.message);
-                    alert(error.message);
-                }
+        if (password !== confirmPassword) {
+            alert("Passwords do not match.");
+            return;
+        }
+
+        try {
+            const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+            const user = userCredential.user;
+
+            await user.updateProfile({
+                displayName: `${firstName} ${lastName}`,
+                photoURL: "default-profile-pic-url"
             });
+
+            await user.sendEmailVerification();
+
+            alert("Verification email sent. Please verify your email before logging in.");
+            await auth.signOut();
+            signupForm.reset();
+            window.location.href = "login.html";
+
+        } catch (error) {
+            if (error.code === "auth/email-already-in-use") {
+                alert("This email is already registered. Please log in instead.");
+                window.location.href = "login.html";
+            } else {
+                console.error("Signup Error:", error);
+                alert(error.message);
+            }
+        }
     });
-});
 
-document.getElementById("google-signup").addEventListener("click", () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
+    // Google Sign-Up
+    const googleBtn = document.getElementById("google-signup");
+    if (googleBtn) {
+        googleBtn.addEventListener("click", async () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
 
-    auth.signInWithPopup(provider)
-        .then((result) => {
-            console.log("Google Sign-In Success:", result.user);
-            window.location.href = "index.html";
-        })
-        .catch((error) => {
-            console.error("Google Sign-In Error:", error.message);
+            try {
+                const result = await auth.signInWithPopup(provider);
+                console.log("Google Sign-Up Success:", result.user);
+                window.location.href = "index.html";
+            } catch (error) {
+                console.error("Google Sign-Up Error:", error);
+                alert(error.message);
+            }
         });
+    }
 });
