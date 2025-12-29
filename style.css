@@ -316,55 +316,78 @@ body {
     pointer-events: none;
 }
 
-.notes a#download-link {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #ff5722;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  height: 3rem;
+  padding: 0 2rem;
+  border-radius: 1.5rem;
+  background: #3d3a4e;
+  color: #fff;
+  cursor: pointer;
+  min-width: 160px; /* IMPORTANT: prevents text cutting */
 }
 
-.notes a#download-link:hover {
-    background-color: #fd7045;
-    transform: scale(115%);
-    cursor: pointer;
+.download-button:hover::before {
+  transform: scaleX(1);
 }
 
-.download-icon {
-    width: 16px;
-    height: 16px;
-    border-left: 2px solid white;
-    border-bottom: 2px solid white;
-    transform: rotate(-45deg);
-    margin-right: 8px;
-    display: inline-block;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-    position: relative;
-}
-
-.clicked .download-text {
-    transform: translateY(-100%);
-    opacity: 0;
-}
-  
-.clicked .download-icon {
-    transform: translateY(50px);
-    opacity: 0;
-}
-  
+.download-text,
 .downloaded-text {
-    position: absolute;
-    opacity: 0;
-    transition: all 0.5s ease;
-    font-weight: 600;
+  position: absolute;
+  inset:0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height:1;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#download-link{
+  text-decoration: none;
+}
+
+.download-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  width: 100%;
+  height: inherit;
+  border-radius: inherit;
+  background: linear-gradient(
+    82.3deg,
+    rgb(240, 113, 28) 10.8%,
+    rgb(233, 149, 93) 94.3%
+  );
+  transition: all 0.475s;
+}
+
+.downloaded-text {
+  opacity: 0;
+}
+
+.download-text{
+  opacity: 1;
 }
   
+.show-downloaded .download-text {
+    opacity: 0;
+}
+
 .show-downloaded .downloaded-text {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0.2s;
 }
 
 /* Team Section */
