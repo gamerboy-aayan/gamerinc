@@ -1,4 +1,4 @@
-# gamerinc
+# Gamer Inc.
 This is the site where the sharp minds meet...
 It is purely for providing notes to the classmates of our class and some below us too...
 
@@ -6,3 +6,6 @@ It is purely for providing notes to the classmates of our class and some below u
 
 Gamer Inc. 
 -Your Ultimate Solution, For all Time!!
+
+# LICENSE
+MIT License
