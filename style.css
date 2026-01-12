@@ -121,7 +121,7 @@ body {
     align-items: center;
     gap: 15px;
     margin-left: auto;
-    margin-right: 15px;
+    margin-right: 10px;
 }
 
 /* 🌟 REMOVE BULLET POINTS */
@@ -133,12 +133,21 @@ body {
 }
 
 /* 🌟 LOGIN/SIGNUP LINKS */
+#auth-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
 #auth-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1em;
-    margin-left: auto;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  margin-left: auto;
+  box-shadow:none;
 }
 
 #auth-links a:hover {
@@ -1270,7 +1279,7 @@ body .auth-page{
     display: none; /* Hidden by default */
     flex-direction: column;
     position: absolute;
-    top: 100px;
+    top: 120px;
     left: 10px;
     padding: 10px;
     border-radius: 5px;
@@ -1399,7 +1408,7 @@ body .auth-page{
     }
 
     #auth-links a {
-        font-size: 0.9em;
+      font-size: 0.9em;
     }
 
     .form label{
