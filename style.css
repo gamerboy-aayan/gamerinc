@@ -134,16 +134,20 @@ body {
 
 /* 🌟 LOGIN/SIGNUP LINKS */
 #auth-links {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
 }
 
 #auth-links a {
   display: inline-block;
-  color: white;
   text-decoration: none;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   font-size: 1em;
   margin-left: auto;
@@ -489,7 +493,6 @@ body {
   display:inline-block;
   padding: 0 10px;
   border-radius: 5px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
 }
 
 /* Contact Section */
@@ -942,7 +945,7 @@ body .auth-page{
   box-sizing: border-box;
   position: absolute;
   display: block;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
 .box1 {
