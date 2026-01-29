@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
     <meta charset="UTF-8">
+    <meta name="google-adsense-account" content="ca-pub-6870722946599142">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6870722946599142"
+    crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Team | Gamer Inc</title>
+    <title>Support Us | Gamer Inc</title>
     <link rel="icon" type="image/png" href="logo_site.png">
     <link rel="stylesheet" href="style.css">
-    <script src="js/script.js" defer></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -17,7 +18,7 @@
             <div class="box3"></div>
         </div>
     </div>
-    <div class = "wrapper">
+    <div class="wrapper">
         <header class="header">
             <div class="container">
             <div class="logo">
@@ -25,26 +26,9 @@
                 <span class="logo-text"> Gamer Inc </span>
             </div>
                 <nav class="navbar">
-                    <button class="menu-toggle" id="menuToggle">
-                        <span class="icon">
-                            <svg viewBox="0 0 175 80" width="40" height="40">
-                                <rect width="80" height="15" fill="#ff5722" rx="10"></rect>
-                                <rect y="30" width="80" height="15" fill="#ff5722" rx="10"></rect>
-                                <rect y="60" width="80" height="15" fill="#ff5722" rx="10"></rect>
-                            </svg>
-                        </span>
-                        <span class="text">MENU</span>
-                    </button>
-                    <ul class="nav-links" id="navLinks">
-                        <li><a href="index.html" data-link>Home</a></li>
-                        <li><a href="notes.html" data-link>Notes</a></li>
-                        <li><a href="features.html" data-link>Features</a></li>
-                        <li><a href="team.html" class="active" data-link>Our Team</a></li>
-                        <li><a href="contact.html" data-link>Contact</a></li>
-                    </ul>
                     <div class="navbar-right">
                     <ul>
-                      <li id="auth-links"><a href="login.html" id="login-link">Login</a> | <a href="signup.html" id="signup-link">SignUp</a></li>
+                        <li id="auth-links"><a href="login.html" id="login-link">Login</a> | <a href="signup.html" id="signup-link">SignUp</a></li>
                     </ul>
                         <div id="profile-container" style="display: none; position: relative;">
                             <img id="profile-img" src="pics/default.jpg">
@@ -60,48 +44,44 @@
                         </div>
                     </div>
                 </nav>
-    
             </div>
         </header>
-    
-        <section class="team">
-            <div class="container">
-                <h2>Our Team</h2>
-                <div class="grid">
-                    <div class="team-member">
-                        <img src= "pics/logo [Edited].jpg" alt="Team Member">
-                        <h3>GamerBoy_Aayan</h3>
-                        <p>Founder & CEO</p>
-                    </div>
-                    <div class="team-member">
-                        <img src= "pics/logo [Edited].jpg" alt="Team Member">
-                        <h3>GamerBoy_Aayan</h3>
-                        <p>Lead Developer</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="pics/AJ_Logo.jpg" alt="Team Member">
-                        <h3>AJ</h3>
-                        <p>Community Manager</p>
-                    </div>
-                </div>
-                <div class="registration-container" id="adminPanel" style="display:none;">
-                <h2>Manage Team Members (Admin)</h2>
-                <form id="memberForm">
-                    <input type="text" id="m_name" placeholder="Name" required>
-                    <input type="text" id="m_class" placeholder="Class" required>
-                    <input type="text" id="m_section" placeholder="Section" required>
-                    <input type="number" id="m_roll" placeholder="Roll Number" required>
-                    <input type="text" id="m_instagram" placeholder="Instagram ID">
-                    <button type="submit">Save Member</button>
-                </form>
-                </div>
-                <div>
-                    <h3 class="member-header">Team Members</h3>
-                    <div class="member-list" id="membersList"></div>
+
+    <section class="donation">
+        <main class="donation-card">
+            <h1>Support Our Work</h1>
+
+            <p class="subtitle">
+            Donations are optional and capped at <strong>₹200</strong>.
+            </p>
+
+            <div class="qr-box">
+            <img src="pics/upi_qr.png" alt="UPI QR Code">
+            </div>
+
+            <div class="upi-section">
+            <span>UPI ID</span>
+                <div class="upi-id">
+                    <code id="upi">8873178551-2@ybl</code>
+                    <button id="copyBtn" onclick="copyUPI()" class="copy-btn">
+                        <span id="copyIcon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                            <rect x="3" y="3" width="13" height="13" rx="2"></rect>
+                            </svg>
+                        </span>
+                        <span id="copyText">Copy UPI</span>
+                    </button>
                 </div>
             </div>
-            <script src="js/team.js"></script>
-        </section>
+
+            <p class="note">
+            If you like what we’re building and want to support us,  
+            you can help by donating. Every contribution means a lot 🤍
+            </p>
+        </main>
+    </section>
+
 
         <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
         <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
@@ -109,18 +89,24 @@
 
         <script src="js/firebase-config.js"></script>
         <script src="js/auth-state.js"></script>
-    
+        <script src="js/donation.js"></script>
+
         <footer class="footer">
             <div class="container">
-                <p>&copy; 2025 Gamer Inc. All rights reserved.</p>
+                <p>&copy; 2024 - 2026 Gamer Inc. All rights reserved.</p>
+                <p><svg aria-hidden="true" focusable="false" class="octicon octicon-law" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M8.75.75V2h.985c.304 0 .603.08.867.231l1.29.736c.038.022.08.033.124.033h2.234a.75.75 0 0 1 0 1.5h-.427l2.111 4.692a.75.75 0 0 1-.154.838l-.53-.53.529.531-.001.002-.002.002-.006.006-.006.005-.01.01-.045.04c-.21.176-.441.327-.686.45C14.556 10.78 13.88 11 13 11a4.498 4.498 0 0 1-2.023-.454 3.544 3.544 0 0 1-.686-.45l-.045-.04-.016-.015-.006-.006-.004-.004v-.001a.75.75 0 0 1-.154-.838L12.178 4.5h-.162c-.305 0-.604-.079-.868-.231l-1.29-.736a.245.245 0 0 0-.124-.033H8.75V13h2.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1 0-1.5h2.5V3.5h-.984a.245.245 0 0 0-.124.033l-1.289.737c-.265.15-.564.23-.869.23h-.162l2.112 4.692a.75.75 0 0 1-.154.838l-.53-.53.529.531-.001.002-.002.002-.006.006-.016.015-.045.04c-.21.176-.441.327-.686.45C4.556 10.78 3.88 11 3 11a4.498 4.498 0 0 1-2.023-.454 3.544 3.544 0 0 1-.686-.45l-.045-.04-.016-.015-.006-.006-.004-.004v-.001a.75.75 0 0 1-.154-.838L2.178 4.5H1.75a.75.75 0 0 1 0-1.5h2.234a.249.249 0 0 0 .125-.033l1.288-.737c.265-.15.564-.23.869-.23h.984V.75a.75.75 0 0 1 1.5 0Zm2.945 8.477c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L13 6.327Zm-10 0c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L3 6.327Z"></path></svg> MIT licence</p>
+                <p>All Contents in this website are published under <a href="licence.txt" style="color: #ffffff;"> MIT LICENCE</a></p>
                 <div class="social-media">
                     <a href="https://youtube.com/@gamerboy_aayan27" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
                     <a href="https://x.com/gamerboy_aayan" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
                     <a href="https://instagram.com/gamerboy_aayan" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
                     <a href="https://www.linkedin.com/in/gamerboy-aayan-92876233a" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <strong> | </strong>
+                    <a href="contact.html"> Contact Us </a>
                 </div>
             </div>
         </footer>
+        
         <nav class="nav-button-container">
             <button class="nav-button active" onclick="location.href='index.html'">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024" stroke-width="0" fill="currentColor" stroke="currentColor" class="nav-icon">
