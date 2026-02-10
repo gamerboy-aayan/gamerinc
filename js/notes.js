@@ -34,7 +34,7 @@ const notesData = {
             "History": ["Chapter 1 - The French Revolution", "Chapter 2 - The Russian Revolution","Chapter 3 - Nazism and the Rise of Hitler", "Chapter 5 - Pastoralists in the Modern World"],
             "Civics": ["Chapter 1 - What is Democracy Why Democracy", "Chapter 2 - Constitutional Design", "Chapter 3 - Electoral Politics", "Chapter 4 - Working of Institutions", "Chapter 5 - Democratic Rights"],
             "Geography": ["Chapter 1 - India-Size&Location", "Chapter 2 - Physical Features of India", "Chapter 3 - Drainage", "Chapter 4 - Climate",],
-            "Economics": ["Chapter 1 - The Story of Palampur", "Chapter 2 - People as Resource", "Chapter 3 - Poverty As A Challenge",]
+            "Economics": ["Chapter 1 - The Story of Palampur", "Chapter 2 - People as Resource", "Chapter 3 - Poverty As A Challenge", "Chapter 4 - Food Security in India"]
         },
     }
 };
@@ -233,4 +233,5 @@ downloadLink.addEventListener('click', function(event) {
         }, 1700);
 
     }, 800);
+
 });
