@@ -36,6 +36,17 @@ const notesData = {
             "Geography": ["Chapter 1 - India-Size&Location", "Chapter 2 - Physical Features of India", "Chapter 3 - Drainage", "Chapter 4 - Climate", "Chapter 6 - Population",],
             "Economics": ["Chapter 1 - The Story of Palampur", "Chapter 2 - People as Resource", "Chapter 3 - Poverty As A Challenge", "Chapter 4 - Food Security in India"]
         },
+    },
+    class10: {
+        hindi: {
+
+        },
+        english:{
+
+        },
+        socialScience: {
+            
+        },
     }
 };
 
@@ -233,6 +244,4 @@ downloadLink.addEventListener('click', function(event) {
         }, 1700);
 
     }, 800);
-
 });
-

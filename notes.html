@@ -32,9 +32,9 @@
                     <button class="menu-toggle" id="menuToggle">
                         <span class="icon">
                             <svg viewBox="0 0 175 80" width="40" height="40">
-                                <rect width="80" height="15" fill="#ff5722" rx="10"></rect>
-                                <rect y="30" width="80" height="15" fill="#ff5722" rx="10"></rect>
-                                <rect y="60" width="80" height="15" fill="#ff5722" rx="10"></rect>
+                                <rect width="80" height="15" fill="#00bfff" rx="10"></rect>
+                                <rect y="30" width="80" height="15" fill="#00bfff" rx="10"></rect>
+                                <rect y="60" width="80" height="15" fill="#00bfff" rx="10"></rect>
                             </svg>
                         </span>
                         <span class="text">MENU</span>
@@ -51,15 +51,20 @@
                       <li id="auth-links"><a href="login.html" id="login-link">Login</a> | <a href="signup.html" id="signup-link">SignUp</a></li>
                     </ul>
                         <div id="profile-container" style="display: none; position: relative;">
-                            <img id="profile-img" src="pics/default.jpg">
+                            <img id="profile-img" src="pics/default.jpg" alt="Profile" onerror="this.src='pics/default.jpg'">
                             <input type="file" id="profile-upload" accept="image/*" style="display: none;">
                         
-                            <!-- Dropdown menu -->
                             <div id="profile-menu" class="dropdown-menu">
                                 <p id="profile-name"></p>
                                 <button id="change-pic">Change Profile Picture</button>
                                 <button id="remove-pic">Remove Profile Picture</button>
-                                <button id="logoutBtn">Logout</button>
+                                <button id="logoutBtn">Logout 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="transparent" stroke="currentColor" style="color:#000000;">
+                                    <path d="M21 12L13 12" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M18 15L20.913 12.087V12.087C20.961 12.039 20.961 11.961 20.913 11.913V11.913L18 9" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16 5V4.5V4.5C16 3.67157 15.3284 3 14.5 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H14.5C15.3284 21 16 20.3284 16 19.5V19.5V19" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -70,25 +75,24 @@
     
     
         <section class="notes">
-            <div style="font-family: Arial, sans-serif; line-height: 1.7; color: #ffffff; padding: 20px;">
-                <h2 style="color: #ff5722;">📘 Notes Section – Your Chapter, Your Way!</h2>
+            <div class="notes-instruction">
+                <h2>📘 Notes Section – Your Chapter, Your Way!</h2>
                 
-                <p>Welcome to the heart of <strong>GamerInc.me</strong> – the <strong>Notes Page</strong>! Whether you're reviewing for a test, catching up on missed chapters, or just want to study smart, this is where all your learning materials live, neatly sorted and always ready.</p>
+                <p>Welcome to the heart of <strong>Gamer Inc.</strong> – the <strong>Notes Page</strong>! Whether you're reviewing for a test, catching up on missed chapters, or just want to study smart, this is where all your learning materials live, neatly sorted and always ready.</p>
 
-                <p>This page is made especially for <strong>Class 8 and Class 9</strong> students, with full support for both <strong>Hindi</strong> and <strong>Sanskrit</strong> medium streams. No more searching around or flipping through heavy books – everything you need is just a few clicks away!</p>
+                <p>This page is made especially for <strong>Class 8 and Class 9</strong> students. No more searching around or flipping through heavy books – everything you need is just a few clicks away!</p>
 
                 <p><strong>Here’s how to use it:</strong></p>
 
-                <ol style="margin-left: 20px;">
+                <ol style="margin-left: 20px; color:black">
                     <li><strong>Select your Class</strong> – Start by choosing your current class.</li>
-                    <li><strong>Pick your Stream</strong> – Hindi or Sanskrit stream, we've got you covered.</li>
                     <li><strong>Choose your Subject</strong> – From Science to Social Science, Hindi to Sanskrit, the list updates based on your stream.</li>
                     <li><strong>Select the Book</strong> – Some subjects use multiple books, so pick the right one.</li>
-                    <li><strong>Finally, choose a Chapter</strong> – And boom 💥 – your notes will appear below!</li>
+                    <li><strong>Finally, choose a Chapter</strong> – And there you go... your notes will appear below!</li>
                 </ol>
 
                 <p>Each chapter includes:</p>
-                <ul style="margin-left: 20px;">
+                <ul style="margin-left: 20px; color:black">
                     <li><strong>Complete Chapter Pages</strong></li>
                     <li><strong>Easy-to-read Summaries</strong></li>
                     <li><strong>Question-Answers & Solutions</strong></li>
@@ -97,7 +101,7 @@
 
                 <p>This isn’t just a note-sharing site – it’s a team effort by students, for students. Designed by <strong>GamerBoy_Aayan</strong>, but supported by everyone who believes in helping each other succeed.</p>
 
-                <blockquote style="text-align: center; color : black; margin: 20px 0; padding: 10px 15px; background-color: #ffffff; border-left: 5px solid #ff5722; font-style: italic;">
+                <blockquote class="blockquote">
                 “Study Hard, have Fun and make your Grades A1.”
                 </blockquote>
 
@@ -110,6 +114,7 @@
                     <option value="">--Select Class--</option>
                     <option value="class8">Class 8</option>
                     <option value="class9">Class 9</option>
+                    <option vlaue="class10">Class 10</option>
                 </select>
 
                 <label for="subject">Select Subject:</label>               
@@ -133,8 +138,8 @@
                 <h2>Preview</h2>
                 <iframe id="pdf-preview" src="" frameborder="0" style="background-color: #ffffff;"></iframe>
                 <a class="download-button" id="download-link" href="#">
-                    <span class="download-text">Download </span>
-                    <span class="downloaded-text">Downloaded! </span>
+                    <span class="download-text"> Download <svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" fill="none"><path d="M12 12V19M12 19L9.75 16.6667M12 19L14.25 16.6667M6.6 17.8333C4.61178 17.8333 3 16.1917 3 14.1667C3 12.498 4.09438 11.0897 5.59198 10.6457C5.65562 10.6268 5.7 10.5675 5.7 10.5C5.7 7.46243 8.11766 5 11.1 5C14.0823 5 16.5 7.46243 16.5 10.5C16.5 10.5582 16.5536 10.6014 16.6094 10.5887C16.8638 10.5306 17.1284 10.5 17.4 10.5C19.3882 10.5 21 12.1416 21 14.1667C21 16.1917 19.3882 17.8333 17.4 17.8333" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="downloaded-text"> Downloaded! </span>
                 </a>
             </div>
         </section>
@@ -149,7 +154,9 @@
     
         <footer class="footer">
             <div class="container">
-                <p>&copy; 2025 Gamer Inc. All rights reserved.</p>
+                <p>&copy; 2024 - 2026 Gamer Inc. | All rights reserved.</p>
+                <span><svg aria-hidden="true" focusable="false" class="octicon octicon-law" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M8.75.75V2h.985c.304 0 .603.08.867.231l1.29.736c.038.022.08.033.124.033h2.234a.75.75 0 0 1 0 1.5h-.427l2.111 4.692a.75.75 0 0 1-.154.838l-.53-.53.529.531-.001.002-.002.002-.006.006-.006.005-.01.01-.045.04c-.21.176-.441.327-.686.45C14.556 10.78 13.88 11 13 11a4.498 4.498 0 0 1-2.023-.454 3.544 3.544 0 0 1-.686-.45l-.045-.04-.016-.015-.006-.006-.004-.004v-.001a.75.75 0 0 1-.154-.838L12.178 4.5h-.162c-.305 0-.604-.079-.868-.231l-1.29-.736a.245.245 0 0 0-.124-.033H8.75V13h2.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1 0-1.5h2.5V3.5h-.984a.245.245 0 0 0-.124.033l-1.289.737c-.265.15-.564.23-.869.23h-.162l2.112 4.692a.75.75 0 0 1-.154.838l-.53-.53.529.531-.001.002-.002.002-.006.006-.016.015-.045.04c-.21.176-.441.327-.686.45C4.556 10.78 3.88 11 3 11a4.498 4.498 0 0 1-2.023-.454 3.544 3.544 0 0 1-.686-.45l-.045-.04-.016-.015-.006-.006-.004-.004v-.001a.75.75 0 0 1-.154-.838L2.178 4.5H1.75a.75.75 0 0 1 0-1.5h2.234a.249.249 0 0 0 .125-.033l1.288-.737c.265-.15.564-.23.869-.23h.984V.75a.75.75 0 0 1 1.5 0Zm2.945 8.477c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L13 6.327Zm-10 0c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L3 6.327Z"></path></svg><strong> MIT licence | </strong></span>
+                <span>All Contents in this website are published under <a href="licence.txt" class="licence"> MIT LICENCE</a></span>
                 <div class="social-media">
                     <a href="https://youtube.com/@gamerboy_aayan27" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
                     <a href="https://x.com/gamerboy_aayan" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
@@ -158,7 +165,7 @@
                 </div>
             </div>
         </footer>
-    
+
         <script src="js/notes.js"></script>         
         <nav class="nav-button-container">
             <button class="nav-button" onclick="location.href='index.html'">
@@ -179,6 +186,11 @@
             <button class="nav-button" onclick="location.href='team.html'">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="0" fill="currentColor" stroke="currentColor" class="nav-icon">
                 <path d="M12 2.5a5.5 5.5 0 0 1 3.096 10.047 9.005 9.005 0 0 1 5.9 8.181.75.75 0 1 1-1.499.044 7.5 7.5 0 0 0-14.993 0 .75.75 0 0 1-1.5-.045 9.005 9.005 0 0 1 5.9-8.18A5.5 5.5 0 0 1 12 2.5ZM8 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z"></path>
+                </svg>
+            </button>
+            <button class="nav-button" onclick="location.href='contact.html'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="1.5" fill="transparent" stroke="currentColor" class="nav-icon">
+                <path d="M21 15a3 3 0 0 1-3 3H7l-4 3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3z"/>
                 </svg>
             </button>
         </nav>

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   /* ---------- CONFIG ---------- */
-  const LOADER_MIN_TIME = 3000;
+  const LOADER_MIN_TIME = 1500;
   const PUBLIC_PAGES = ["login.html", "signup.html"];
 
   const loaderStartTime = Date.now();
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /* ---------- AUTH READY ---------- */
     window.authReady = true;
 
-    /* ---------- LOADER (MIN 3s) ---------- */
+    /* ---------- LOADER (MIN 1.5s) ---------- */
     if (authLoader) {
       const elapsed = Date.now() - loaderStartTime;
       const remaining = Math.max(LOADER_MIN_TIME - elapsed, 0);
