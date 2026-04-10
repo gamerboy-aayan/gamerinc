@@ -22,16 +22,23 @@
         <header class="header">
             <div class="container">
             <div class="logo">
-                <img src="pics/Gamer Inc.png" alt="Logo" class="logo-img">
+                <img src="pics/Gamer Inc.webp" alt="Logo" class="logo-img">
                 <span class="logo-text"> Gamer Inc </span>
             </div>
-                <nav class="navbar">
-                    <div class="navbar-right">
+            <nav class="navbar">
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="index.html" data-link>Home</a></li>
+                        <li><a href="notes.html" data-link>Notes</a></li>
+                        <li><a href="donation.html" class="active" data-link>Donation</a></li>
+                        <li><a href="team.html" data-link>Our Team</a></li>
+                        <li><a href="contact.html" data-link>Contact</a></li>
+                    </ul>
+                <div class="navbar-right">
                     <ul>
                         <li id="auth-links"><a href="login.html" id="login-link">Login</a> | <a href="signup.html" id="signup-link">SignUp</a></li>
                     </ul>
                         <div id="profile-container" style="display: none; position: relative;">
-                            <img id="profile-img" src="pics/default.jpg">
+                            <img id="profile-img" src="pics/default.webp">
                             <input type="file" id="profile-upload" accept="image/*" style="display: none;">
                         
                             <!-- Dropdown menu -->
@@ -62,7 +69,7 @@
             </p>
 
             <div class="qr-box">
-            <img src="pics/upi_qr.png" alt="UPI QR Code">
+            <img src="pics/upi_qr.webp" alt="UPI QR Code">
             </div>
 
             <div class="upi-section">

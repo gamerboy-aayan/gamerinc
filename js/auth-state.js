@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
           .once("value")
           .then((snapshot) => {
             const userData = snapshot.val();
-            profileImg.src = userData?.profilePicture || "pic/default.jpg";
+            profileImg.src = userData?.profilePicture || "pic/default.webp";
           });
       }
 
@@ -111,9 +111,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!user) return;
 
     database.ref("users/" + user.uid)
-      .update({ profilePicture: "pic/default.jpg" })
+      .update({ profilePicture: "pics/default.webp" })
       .then(() => {
-        profileImg.src = "pic/default.jpg";
+        profileImg.src = "pics/default.webp";
       });
   });
 
