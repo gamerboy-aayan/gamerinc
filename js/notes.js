@@ -39,15 +39,15 @@ const notesData = {
     },
     class10: {
         hindi: {
-
+            "Hindi": ["Coming Soon"],
         },
         english:{
-
+            "English": ["Coming Soon"],
         },
         socialScience: {
-            
+            "History": ["Chapter 1 - The Rise of Nationalism in Europe",],
         },
-    }
+    },
 };
 
 function beautifySubjectName(subjectKey) {
