@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Google Sans';
+  src: url('./fonts/GoogleSans-Regular.woff2') format('woff2');
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +11,7 @@
 
 
 body {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Google Sans', sans-serif;
     color: #000000;
     background-color: #222;
     line-height: 1.6;
@@ -67,7 +72,7 @@ body {
   font-weight: bold;
   text-align:justify;
   font-weight: 600;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Google Sans', sans-serif;
   font-size:xx-large;
 }
 
@@ -83,7 +88,7 @@ body {
 }
 
 .navbar ul {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Google Sans', sans-serif;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -202,7 +207,7 @@ body {
   border-radius: 5px;
   padding: 8px 8px 8px 8px;
   font-weight: bold;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  font-family:'Google Sans', sans-serif;
 }
 
 .dropdown-menu button {
@@ -216,7 +221,7 @@ body {
   font-size: 14px;
   color:#000000;
   font-weight: 500;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Google Sans', sans-serif;
   transition: all 0.3s;
 }
 
@@ -234,15 +239,17 @@ body {
 
 .container .main-text{
   text-align: justify; 
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  font-family: 'Google Sans', sans-serif; 
   line-height: 1.6; 
   color: #ffffff;
   padding:5px;
 }
 
 .hero h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
 
 .hero h2,.hero .h3{
@@ -269,13 +276,13 @@ body {
     margin-bottom: 10px;
     margin-right:10px;
     margin-left:20px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Google Sans', sans-serif;
 }
 
 .hero .btn-primary {
     font-size: 1.2em;
     font-weight: bold;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Google Sans', sans-serif;
     display: inline-block;
     padding: 10px 20px;
     background-color: #00bfff;
@@ -310,7 +317,7 @@ body {
 }
 
 .notes-instructions {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  font-family: 'Google Sans', sans-serif; 
   line-height: 1.7; 
   color: black; 
   padding: 20px;
@@ -353,10 +360,6 @@ body {
     margin-bottom: 10px;
 }
 
-.notes #pdf-preview {
-    pointer-events: none;
-}
-
 .download-button {
   display: inline-block;
   align-items: center;
@@ -386,7 +389,7 @@ body {
   inset:0;
   align-items: center;
   justify-content: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Google Sans', sans-serif;
   font-weight: 600;
   font-size: 1rem;
   line-height:1;
@@ -401,7 +404,7 @@ body {
   inset:0;
   text-align: center;
   top: 15px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Google Sans', sans-serif;
   font-weight: 600;
   font-size: 1rem;
   line-height:1;
@@ -455,51 +458,59 @@ body {
     background-color: #fff;
 }
 
-.team .grid {
+.team .owner {
     display: flex;
     gap: 20px;
-    justify-content: center;
+    justify-content: left;
     flex-wrap: wrap;
-    margin-bottom: 30px;
+    margin: 10px;
     align-items: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    border-radius: 10px;
 }
 
-.team .team-member {
-    background: #444;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.team .owner-info {
+    font-family: 'Google Sans', sans-serif;
     font-weight: 600;
     font-size: large;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
     text-align: center;
-    width: 250px;
+    max-width: 200px;
     justify-content: center;
 }
 
-.team .team-member img {
+.owner-class {
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 300;
+  margin: 20px;
+  text-align: justify;
+}
+
+.team .owner-pic img {
     border-radius: 50%;
     width: 150px;
     height: 150px;
     object-fit: cover;
-    margin-bottom: 15px;
+    margin-left:10px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
 }
 
-.team-member h3{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.owner h3{
+  font-family: 'Google Sans', sans-serif;
   font-size: larger;
-  font-weight: 500;
+  font-weight: 700;
   border-radius: 5px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.4);
   margin-bottom: 10px;
-  background-color: #555;
   color:#00bfff
 }
 
-.team-member p{
+.owner .owner-info p{
   display:inline-block;
   padding: 0 10px;
   border-radius: 5px;
+  color:#00bfff;
 }
 
 .contact {
@@ -577,7 +588,7 @@ body {
 }
 
 h2 {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Google Sans', sans-serif;
   font-weight: 700;
   font-size:x-large;
   color: #00bfff;
@@ -594,10 +605,11 @@ h2 {
     position: relative; 
     max-width: 250px; 
     text-align: justify; 
+    justify-content:center;
 }
 
 .student-box p {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Google Sans', sans-serif;
   margin: 6px 0;
 }
 
@@ -613,7 +625,7 @@ h2 {
 
 .member-header{
   color:#00bfff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Google Sans', sans-serif;
   font-weight: 700;
   text-align: center; 
   font-size:x-large;
@@ -626,7 +638,7 @@ h2 {
 }
 
 .student-header { 
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Google Sans', sans-serif;
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
@@ -838,13 +850,13 @@ body .auth-page {
   color: #00bfff;
   top: 0px;
   font-size: 0.7em;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Google Sans', sans-serif;
   font-weight: 600;
 }
 
 .input,
 .form .input {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Google Sans', sans-serif;
   font-size: medium;
   width: 100%;
 }
@@ -1258,7 +1270,8 @@ body .auth-page {
   font-size: 0.85rem;
   opacity: 0.85;
   line-height: 1.4;
-  color: black
+  color: black;
+  font-family: 'Google Sans', sans-serif;
 }
 
 .copy-btn {
@@ -1269,7 +1282,6 @@ body .auth-page {
   border-radius: 14px;
   border: none;
   background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
   color: black;
   font-size: 14px;
   cursor: pointer;
@@ -1293,7 +1305,7 @@ body .auth-page {
   text-decoration: none;
   color:#00bfff;
   font-weight:700;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Google Sans', sans-serif;
   font-size: small;
 }
 
@@ -1432,5 +1444,10 @@ body .auth-page {
 
   .form label{
     width:100%;
+  }
+
+  .owner .owner-pic img {
+    width: 100px;
+    height: 100px;
   }
 }
