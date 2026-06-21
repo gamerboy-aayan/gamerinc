@@ -6,6 +6,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const loaderStartTime = Date.now();
 
+  /* ---------- THEME SYSTEM ---------- */
+  const themeLink = document.getElementById("theme-style");
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "dark" && themeLink) {
+    themeLink.href = "dark.css";
+  }
+
+  // Global toggle function
+  window.toggleTheme = function () {
+    if (!themeLink) return;
+
+    if (themeLink.href.includes("light.css")) {
+      themeLink.href = "dark.css";
+      localStorage.setItem("theme", "dark");
+    } else {
+      themeLink.href = "light.css";
+      localStorage.setItem("theme", "light");
+    }
+  };
+
   /* ---------- GLOBAL FLAGS ---------- */
   window.isUserLoggedIn = false;
   window.isUserVerified = false;
@@ -45,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
           .once("value")
           .then((snapshot) => {
             const userData = snapshot.val();
-            profileImg.src = userData?.profilePicture || "pic/default.webp";
+            profileImg.src = userData?.profilePicture || "pics/default.webp";
           });
       }
 
