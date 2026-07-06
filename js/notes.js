@@ -48,7 +48,7 @@ const notesData = {
         },
         socialScience: {
             "History": ["Chapter 1 - The Rise of Nationalism in Europe",],
-            "Geography": ["Chapter 1 - Resources and Development",],
+            "Geography": ["Chapter 1 - Resources and Development", "Chapter 2 - Forest and Wildlife Resources", "Chapter 3 - Water Resources",],
             "Political Science": ["Chapter 1 - Power-Sharing",],
             "Economics": ["Chapter 1 - Development",]
         },
