@@ -49,7 +49,7 @@ const notesData = {
         socialScience: {
             "History": ["Chapter 1 - The Rise of Nationalism in Europe", "Chapter 2 - Nationalism in India", "Chapter 3 - The Making of a Global World",],
             "Geography": ["Chapter 1 - Resources and Development", "Chapter 2 - Forest and Wildlife Resources", "Chapter 3 - Water Resources", "Chapter 4 - Agriculture",],
-            "Political Science": ["Chapter 1 - Power-Sharing", "Chapter 2 - Federalism",],
+            "Political Science": ["Chapter 1 - Power-Sharing", "Chapter 2 - Federalism", "Chapter 3 - Gender, Religion and Caste",],
             "Economics": ["Chapter 1 - Development", "Chapter 2 - Sectors of Economy",]
         },
     },
